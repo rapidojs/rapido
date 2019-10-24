@@ -10,7 +10,7 @@ export default function App() {
         style={{ marginVertical: 50, width: 192, height: 192 }}
       />
       <Text style={styles.bodyText}>
-        Edit <Text style={styles.boldText}>src/App.js</Text> and save to reload.
+        Edit <Text style={styles.boldText}>App.js</Text> and save to reload.
       </Text>
     </View>
   );
