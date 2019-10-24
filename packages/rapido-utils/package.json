@@ -1,0 +1,40 @@
+{
+  "name": "@rapido/utils",
+  "version": "0.0.1",
+  "description": "Utils used by Rapido Apps.",
+  "homepage": "https://rapidojs.dev/",
+  "bugs": {
+    "url": "https://github.com/rapidojs/rapido/issues",
+    "email": "dev@verumtechnologies.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rapidojs/rapido.git",
+    "directory": "packages/rapido-utils"
+  },
+  "license": "MIT",
+  "files": [
+    "/dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "yarn build",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "@types/lodash": "^4.14.138",
+    "babel-preset-expo": "^7.1.0",
+    "jest-expo": "^34.0.0",
+    "typescript": "^3.6.3"
+  }
+}

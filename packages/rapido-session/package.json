@@ -1,0 +1,49 @@
+{
+  "name": "@rapido/session",
+  "version": "0.0.1",
+  "description": "Library to manage session in Rapido apps.",
+  "homepage": "https://rapidojs.dev/",
+  "bugs": {
+    "url": "https://github.com/rapidojs/rapido/issues",
+    "email": "dev@verumtechnologies.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rapidojs/rapido.git",
+    "directory": "packages/rapido-session"
+  },
+  "license": "MIT",
+  "files": [
+    "/dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "yarn build",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "hoist-non-react-statics": "^3.3.0",
+    "lodash": "^4.17.15",
+    "object-assign": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/jest": "^24.0.19",
+    "@types/lodash": "^4.14.138",
+    "@types/object-assign": "^4.0.30",
+    "@types/react-native": "^0.57.65",
+    "babel-preset-expo": "^7.1.0",
+    "jest-expo": "^35.0.0",
+    "mock-async-storage": "^2.2.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "typescript": "^3.6.3"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  }
+}
