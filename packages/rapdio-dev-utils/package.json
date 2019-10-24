@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "name": "@rapido/dev-utils",
+  "description": "Dev utilities used by Rapido",
+  "homepage": "https://rapidojs.dev/",
+  "bugs": {
+    "url": "https://github.com/rapidojs/rapido/issues",
+    "email": "dev@verumtechnologies.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rapidojs/rapido.git",
+    "directory": "packages/rapido-dev-utils"
+  },
+  "license": "MIT",
+  "files": [
+    "browsersHelper.js",
+    "chalk.js",
+    "checkRequiredFiles.js",
+    "crossSpawn.js",
+    "globby.js",
+    "ignoredFiles.js",
+    "immer.js",
+    "sortPackageJson.js"
+  ],
+  "dependencies": {
+    "react-dev-utils": "^9.1.0",
+    "sort-package-json": "^1.22.1"
+  },
+  "engines": {
+    "node": ">=8.10"
+  }
+}

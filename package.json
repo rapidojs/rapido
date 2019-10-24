@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "changelog": "lerna-changelog",
+    "format": "prettier --trailing-comma es5 --single-quote --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "publish": "tasks/publish.sh",
+    "rapido-init": "node tasks/ri.js",
+    "reset": "sh tasks/reset-dev-env.sh",
+    "test": "lerna run --parallel test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "commander": "2.20.0",
+    "eslint": "^6.1.0",
+    "fs-extra": "^8.1.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lerna": "^3.18.3",
+    "lerna-changelog": "^0.8.2",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2"
+  }
+}
