@@ -21,6 +21,7 @@
     "globby.js",
     "ignoredFiles.js",
     "immer.js",
+    "inquirer.js",
     "sortPackageJson.js"
   ],
   "dependencies": {
