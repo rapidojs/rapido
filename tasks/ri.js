@@ -70,6 +70,7 @@ Object.keys(packagePathsByName).forEach(name => {
   const json = JSON.parse(fs.readFileSync(packageJson, 'utf8'));
   Object.keys(packagePathsByName).forEach(otherName => {
     const scopedOtherName = `@rapido/${otherName.replace('rapido-', '')}`;
+    console.log(scopedOtherName);
     if (json.dependencies && json.dependencies[scopedOtherName]) {
       json.dependencies[scopedOtherName] =
         'file:' + packagePathsByName[otherName];
