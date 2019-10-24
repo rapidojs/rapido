@@ -25,7 +25,7 @@
   </a>
 </div>
 
-**🚀 Fast**: Setup a react app that runs on iOS, Android and Web by running one command. Develop features fast with the Rapido toolset.
+**🚀 Fast**: Setup a universal react app by running one command and develop features fast with the Rapido toolset.
 
 **👌 Convenient**: Stay up to date with the latest tools and libraries (React, React Native, ESLint, etc) with minimal effort.
 
