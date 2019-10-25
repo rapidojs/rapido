@@ -34,7 +34,10 @@
     "@types/jest": "^24.0.19",
     "@types/lodash": "^4.14.138",
     "babel-preset-expo": "^7.1.0",
-    "jest-expo": "^34.0.0",
+    "jest-expo": "^35.0.0",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-web": "^0.11.7",
     "typescript": "^3.6.3"
   }
 }

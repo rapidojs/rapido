@@ -1,24 +1,21 @@
 {
   "name": "@rapido/init",
   "version": "0.0.1",
+  "description": "Initialization script for creating Rapido apps.",
   "keywords": [
     "react"
   ],
-  "description": "Initialization script for creating Rapido apps.",
   "homepage": "https://rapidojs.dev/",
   "bugs": {
     "url": "https://github.com/rapidojs/rapido/issues",
     "email": "dev@verumtechnologies.com"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/rapidojs/rapido.git",
     "directory": "packages/rapido-init"
   },
-  "engines": {
-    "node": ">=8"
-  },
+  "license": "MIT",
   "files": [
     "index.js",
     "rapidoInit.js",
@@ -38,5 +35,8 @@
     "tar-pack": "3.4.1",
     "tmp": "0.0.33",
     "validate-npm-package-name": "3.0.0"
+  },
+  "engines": {
+    "node": ">=8"
   }
 }

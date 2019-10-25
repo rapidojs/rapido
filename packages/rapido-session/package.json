@@ -39,8 +39,9 @@
     "@types/react-native": "^0.57.65",
     "babel-preset-expo": "^7.1.0",
     "jest-expo": "^35.0.0",
-    "mock-async-storage": "^2.2.0",
+    "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-web": "^0.11.7",
     "typescript": "^3.6.3"
   },
   "peerDependencies": {

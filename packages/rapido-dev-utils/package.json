@@ -1,6 +1,6 @@
 {
-  "version": "0.0.1",
   "name": "@rapido/dev-utils",
+  "version": "0.0.1",
   "description": "Dev utilities used by Rapido",
   "homepage": "https://rapidojs.dev/",
   "bugs": {

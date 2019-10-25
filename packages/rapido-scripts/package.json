@@ -1,6 +1,6 @@
 {
-  "version": "0.0.1",
   "name": "@rapido/scripts",
+  "version": "0.0.1",
   "description": "Build universal react apps incredibly fast.",
   "keywords": [
     "expo",
@@ -27,6 +27,7 @@
     "template",
     "template-typescript"
   ],
+  "types": "./lib/rapido.d.ts",
   "bin": {
     "rapido": "./bin/rapido-scripts.js"
   },
@@ -42,11 +43,10 @@
       "last 1 safari version"
     ]
   },
-  "types": "./lib/rapido.d.ts",
   "dependencies": {
+    "@rapido/dev-utils": "^0.0.1",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
-    "@rapido/dev-utils": "^0.0.1",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.6",
