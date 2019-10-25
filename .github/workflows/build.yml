@@ -17,6 +17,7 @@ jobs:
         yarn install
         yarn lint
         yarn test
+        yarn build
         yarn rapido-init my-app
       env:
         CI: true
