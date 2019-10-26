@@ -12,7 +12,7 @@ const chalk = require('@rapido/dev-utils/chalk');
 
 const paths = require('./paths');
 
-module.exports = (resolve, rootDir, isEjecting) => {
+module.exports = (resolve, rootDir) => {
   // Use this instead of `paths.testsSetup` to avoid putting
   // an absolute filename into configuration after ejecting.
   const setupTestsMatches = paths.testsSetup.match(/setupTests\.(.+)/);
@@ -36,17 +36,9 @@ module.exports = (resolve, rootDir, isEjecting) => {
       '<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}',
       '!<rootDir>/node_modules/**',
     ],
-    transform: {
-      '^.+\\.(js|jsx|ts|tsx)$': isEjecting
-        ? '<rootDir>/node_modules/babel-jest'
-        : resolve('config/babelTransform.js'),
-    },
     transformIgnorePatterns: [
       'node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)',
     ],
-    moduleFileExtensions: [...paths.moduleFileExtensions, 'node'].filter(
-      ext => !ext.includes('mjs')
-    ),
   };
   if (rootDir) {
     config.rootDir = rootDir;

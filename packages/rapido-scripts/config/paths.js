@@ -105,5 +105,3 @@ if (
   };
 }
 // @remove-on-eject-end
-
-module.exports.moduleFileExtensions = moduleFileExtensions;
