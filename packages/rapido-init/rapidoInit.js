@@ -193,8 +193,6 @@ async function createApp(
   useNpm,
   usePnp
 ) {
-  console.log(tools);
-  process.exit(1);
   let useTools = tools || [];
   if (!useTools.length && !isInteractive) {
     console.log(
@@ -233,7 +231,8 @@ async function createApp(
         ],
       },
     ]);
-
+    console.log(answers);
+    process.exit(1);
     useTools = answers || [];
   }
 
