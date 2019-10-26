@@ -78,12 +78,75 @@ function tryGitInit(appPath) {
   }
 }
 
+function walk(dir, done) {
+  var folders = [];
+  var files = [];
+  fs.readdir(dir, function(err, list) {
+    if (err) {
+      return done(err);
+    }
+    var pending = list.length;
+    if (!pending) {
+      return done(null, files);
+    }
+    list.forEach(function(file) {
+      file = path.resolve(dir, file);
+      fs.stat(file, function(err, stat) {
+        if (stat && stat.isDirectory()) {
+          folders.push(file);
+          walk(file, function(err, resFolders, resFiles) {
+            folders = folders.concat(resFolders);
+            files = files.concat(resFiles);
+            if (!--pending) {
+              done(null, folders, files);
+            }
+          });
+        } else {
+          files.push(file);
+          if (!--pending) {
+            done(null, folders, files);
+          }
+        }
+      });
+    });
+  });
+}
+
+function filterContent(content, key, useKey) {
+  let filteredContent = content;
+  let regex = new RegExp(`// @remove-file-if-no-${key}`);
+  if (!useKey && content.match(regex)) {
+    return '';
+  }
+  regex = new RegExp(`// @remove-file-if-${key}`);
+  if (useKey && content.match(regex)) {
+    return '';
+  }
+  regex = RegExp(
+    `\\/\\/ @remove-if-no-${key}-begin([\\s\\S]*?)\\/\\/ @remove-if-no-${key}-end`,
+    'gm'
+  );
+  filteredContent = filteredContent.replace(regex, useKey ? '$1' : '');
+  regex = RegExp(
+    `\\/\\/ @remove-if-${key}-begin([\\s\\S]*?)\\/\\/ @remove-if-${key}-end`,
+    'gm'
+  );
+  filteredContent =
+    filteredContent.replace(regex, useKey ? '' : '$1').trim() + '\n';
+  return filteredContent;
+}
+
 module.exports = function(
   appPath,
   appName,
   verbose,
   originalDirectory,
-  useTypeScript
+  useTypeScript,
+  usePrettier,
+  useComponents,
+  useEnv,
+  useSession,
+  useUtils
 ) {
   const ownPath = path.dirname(
     require.resolve(path.join(__dirname, '..', 'package.json'))
@@ -108,6 +171,25 @@ module.exports = function(
 
   if (useTypeScript) {
     appPackage.scripts.tsc = 'tsc --noEmit';
+  }
+
+  if (usePrettier) {
+    appPackage.scripts.format = `prettier --trailing-comma es5 --single-quote --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'`;
+    appPackage.husky = {
+      hooks: {
+        'pre-commit': 'lint-staged',
+      },
+    };
+    appPackage['lint-staged'] = {
+      '*.{js,jsx,ts,tsx,json,css,scss,md}': [
+        'prettier --trailing-comma es5 --single-quote --write',
+        'git add',
+      ],
+    };
+    appPackage.prettier = {
+      singleQuote: true,
+      trailingComma: 'es5',
+    };
   }
 
   // Setup the eslint config
@@ -136,8 +218,51 @@ module.exports = function(
     ownPath,
     useTypeScript ? 'template-typescript' : 'template'
   );
+
+  function verifyAbsent(file) {
+    if (fs.existsSync(path.join(appPath, file.replace(templatePath, '')))) {
+      console.error(
+        `\`${file.replace(
+          templatePath,
+          ''
+        )}\` already exists in your app folder. We cannot ` +
+          'continue as you would lose all the changes in that file or directory. ' +
+          'Please move or delete it (maybe make a copy for backup) and run this ' +
+          'command again.'
+      );
+      process.exit(1);
+    }
+  }
+
   if (fs.existsSync(templatePath)) {
-    fs.copySync(templatePath, appPath);
+    walk(templatePath, function(err, folders, files) {
+      if (err) {
+        console.error(
+          `Could not read template directory: ${chalk.green(templatePath)}`
+        );
+        return;
+      }
+
+      // Ensure that the app folder is clean and we won't override any files
+      folders.forEach(verifyAbsent);
+      files.forEach(verifyAbsent);
+
+      folders.forEach(folder => {
+        fs.mkdirSync(path.join(appPath, folder));
+      });
+
+      files.forEach(file => {
+        let content = fs.readFileSync(file, 'utf8');
+        content = filterContent(content, 'components', useComponents);
+        content = filterContent(content, 'env', useEnv);
+        content = filterContent(content, 'session', useSession);
+        content = filterContent(content, 'utils', useUtils);
+        if (!content) {
+          return;
+        }
+        fs.writeFileSync(file.replace(templatePath, appPath), content);
+      });
+    });
   } else {
     console.error(
       `Could not locate supplied template: ${chalk.green(templatePath)}`
@@ -197,12 +322,24 @@ module.exports = function(
   const templateDependenciesPath = path.join(appPath, 'dependencies.json');
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath);
-    args = args.concat(
-      Object.keys(templateDependencies.default).map(pkg => {
-        const version = templateDependencies.default[pkg];
-        return version ? `${pkg}@${version}` : pkg;
-      })
-    );
+    [
+      { key: 'default', useKey: true },
+      { key: 'prettier', useKey: usePrettier },
+      { key: 'components', useKey: useComponents },
+      { key: 'env', useKey: useEnv },
+      { key: 'session', useKey: useSession },
+      { key: 'utils', useKey: useUtils },
+    ].forEach(({ key, useKey }) => {
+      if (useKey && templateDependencies[key]) {
+        args = args.concat(
+          Object.keys(templateDependencies[key]).map(pkg => {
+            const version = templateDependencies[key][pkg];
+            return version ? `${pkg}@${version}` : pkg;
+          })
+        );
+      }
+    });
+
     fs.unlinkSync(templateDependenciesPath);
   }
 

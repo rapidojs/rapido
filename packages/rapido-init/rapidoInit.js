@@ -214,6 +214,11 @@ async function createApp(
             value: 'typescript',
           },
           {
+            name: 'Prettier         Automatic code formatter',
+            short: 'Prettier',
+            value: 'prettier',
+          },
+          {
             name: 'Environment      Manage environment variables',
             short: 'Environment',
             value: 'env',
@@ -240,6 +245,7 @@ async function createApp(
   }
 
   const useTypescript = useTools.includes('typescript');
+  const usePrettier = useTools.includes('prettier');
   const useEnv = useTools.includes('env');
   const useComponents = useTools.includes('components');
   const useSession = useTools.includes('session');
@@ -345,6 +351,7 @@ async function createApp(
     originalDirectory,
     scriptsVersion,
     useTypescript,
+    usePrettier,
     useComponents,
     componentsVersion,
     useEnv,
@@ -435,6 +442,7 @@ function run(
   originalDirectory,
   scriptsVersion,
   useTypescript,
+  usePrettier,
   useComponents,
   componentsVersion,
   useEnv,
@@ -472,7 +480,9 @@ function run(
       )
       .then(({ isOnline, packageNames }) => {
         console.log(
-          `Installing ${packageNames.map(name => name).join(', ')}...`
+          `Installing ${chalk.cyan(
+            packageNames.map(name => name).join(', ')
+          )}...`
         );
         console.log();
 
@@ -502,6 +512,7 @@ function run(
             verbose,
             originalDirectory,
             useTypescript,
+            usePrettier,
             useComponents,
             useEnv,
             useSession,
