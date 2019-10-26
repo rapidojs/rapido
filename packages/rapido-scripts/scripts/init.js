@@ -85,12 +85,14 @@ function walk(dir, done) {
   fs.readdir(dir, function(err, list) {
     if (err) {
       console.log('REMOVE: done with err', err);
-      return done(err);
+      done(err);
+      return;
     }
+    console.log('REMOVE: evaluating list', list);
     var pending = list.length;
     if (!pending) {
       console.log('REMOVE: done filders and files', folders, files);
-      return done(null, folders, files);
+      done(null, folders, files);
     }
     list.forEach(function(file) {
       file = path.resolve(dir, file);
