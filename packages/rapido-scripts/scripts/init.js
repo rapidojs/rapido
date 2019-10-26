@@ -148,11 +148,14 @@ module.exports = function(
   useSession,
   useUtils
 ) {
+  console.log('REMOVE: Starting init');
+
   const ownPath = path.dirname(
     require.resolve(path.join(__dirname, '..', 'package.json'))
   );
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
+  console.log('REMOVE: Got paths', ownPath, appPath);
 
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
@@ -233,6 +236,7 @@ module.exports = function(
       process.exit(1);
     }
   }
+  console.log('REMOVE: Going to walk templatePath', templatePath);
 
   if (fs.existsSync(templatePath)) {
     walk(templatePath, function(err, folders, files) {
