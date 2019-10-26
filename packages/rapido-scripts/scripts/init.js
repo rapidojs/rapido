@@ -242,21 +242,28 @@ module.exports = function(
         );
         return;
       }
-
+      console.log('REMOVE: Collected folders and files: ', folders, files);
       // Ensure that the app folder is clean and we won't override any files
       folders.forEach(verifyAbsent);
       files.forEach(verifyAbsent);
+      console.log('REMOVE: Folders and files clear');
 
       folders.forEach(folder => {
         fs.mkdirSync(path.join(appPath, folder));
       });
+      console.log('REMOVE: Made folders');
 
       files.forEach(file => {
+        console.log('REMOVE: Processing file', file);
         let content = fs.readFileSync(file, 'utf8');
         content = filterContent(content, 'components', useComponents);
         content = filterContent(content, 'env', useEnv);
         content = filterContent(content, 'session', useSession);
         content = filterContent(content, 'utils', useUtils);
+        console.log(
+          'REMOVE: writing content to ',
+          file.replace(templatePath, appPath)
+        );
         if (!content) {
           return;
         }
