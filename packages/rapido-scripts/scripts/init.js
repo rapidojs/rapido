@@ -120,14 +120,16 @@ function walk(dir, exclude, done) {
 
 function filterContent(content, key, useKey) {
   let filteredContent = content;
-  let regex = new RegExp(`// @remove-file-if-no-${key}`);
-  if (!useKey && content.match(regex)) {
-    return '';
-  }
-  regex = new RegExp(`// @remove-file-if-${key}`);
-  if (useKey && content.match(regex)) {
-    return '';
-  }
+  let regex = new RegExp(`// @remove-file-if-no-${key}\\n?`);
+  filteredContent =
+    !useKey && filteredContent.match(regex)
+      ? ''
+      : filteredContent.replace(regex, '');
+  regex = new RegExp(`// @remove-file-if-${key}\\n?`);
+  filteredContent =
+    useKey && filteredContent.match(regex)
+      ? ''
+      : filteredContent.replace(regex, '');
   regex = RegExp(
     `\\/\\/ @remove-if-no-${key}-begin\\n?([\\s\\S]*?)\\/\\/ @remove-if-no-${key}-end\\n?`,
     'gm'
