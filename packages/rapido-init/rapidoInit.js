@@ -41,6 +41,7 @@ const envinfo = require('envinfo');
 const execSync = require('child_process').execSync;
 const fs = require('fs-extra');
 const hyperquest = require('hyperquest');
+const inquirer = require('inquirer');
 const os = require('os');
 const path = require('path');
 const semver = require('semver');
@@ -52,6 +53,8 @@ const validateProjectName = require('validate-npm-package-name');
 
 const packageJson = require('./package.json');
 
+const isInteractive = process.stdout.isTTY;
+
 // These files should be allowed to remain on a failed install,
 // but then silently removed during the next create.
 const errorLogFilePatterns = [
@@ -61,6 +64,10 @@ const errorLogFilePatterns = [
 ];
 
 let projectName;
+
+function commaSeparatedList(value) {
+  return value.split(',');
+}
 
 const program = new commander.Command(packageJson.name)
   .version(packageJson.version)
@@ -72,44 +79,35 @@ const program = new commander.Command(packageJson.name)
   .option('--verbose', 'print additional logs')
   .option('--info', 'print environment debug info')
   .option(
-    '--scripts-version <alternative-package>',
-    'use a non-standard version of rapido-scripts'
+    '-t, --tools <tools>',
+    'comma separated list of rapido tools to add',
+    commaSeparatedList
+  )
+  .option(
+    '--components-version <alternative-components-package>',
+    'use a non-standard version of @rapido/components'
+  )
+  .option(
+    '--env-version <alternative-env-package>',
+    'use a non-standard version of @rapido/env'
+  )
+  .option(
+    '--scripts-version <alternative-script-package>',
+    'use a non-standard version of @rapido/scripts'
+  )
+  .option(
+    '--session-version <alternative-session-package>',
+    'use a non-standard version of @rapido/session'
+  )
+  .option(
+    '--utils-version <alternative-utils-package>',
+    'use a non-standard version of @rapido/utils'
   )
   .option('--use-npm')
   .option('--use-pnp')
-  .option('--typescript')
   .allowUnknownOption()
   .on('--help', () => {
     console.log(`    Only ${chalk.green('<project-directory>')} is required.`);
-    console.log();
-    console.log(
-      `    A custom ${chalk.cyan('--scripts-version')} can be one of:`
-    );
-    console.log(`      - a specific npm version: ${chalk.green('0.8.2')}`);
-    console.log(`      - a specific npm tag: ${chalk.green('@next')}`);
-    console.log(
-      `      - a custom fork published on npm: ${chalk.green(
-        'my-rapido-scripts'
-      )}`
-    );
-    console.log(
-      `      - a local path relative to the current working directory: ${chalk.green(
-        'file:../my-rapido-scripts'
-      )}`
-    );
-    console.log(
-      `      - a .tgz archive: ${chalk.green(
-        'https://mysite.com/my-rapido-scripts-0.8.2.tgz'
-      )}`
-    );
-    console.log(
-      `      - a .tar.gz archive: ${chalk.green(
-        'https://mysite.com/my-rapido-scripts-0.8.2.tar.gz'
-      )}`
-    );
-    console.log(
-      `    It is not needed unless you specifically want to use a fork.`
-    );
     console.log();
     console.log(
       `    If you have any problems, do not hesitate to file an issue:`
@@ -134,6 +132,7 @@ if (program.info) {
           'react',
           'react-dom',
           'react-native',
+          'react-native-web',
           '@rapido/scripts',
         ],
         npmGlobalPackages: ['@rapido/init'],
@@ -172,13 +171,75 @@ function printValidationResults(results) {
 createApp(
   projectName,
   program.verbose,
+  program.tools,
+  program.componentsVersion,
+  program.envVersion,
   program.scriptsVersion,
+  program.sessionVersion,
+  program.utilsVersion,
   program.useNpm,
-  program.usePnp,
-  program.typescript
+  program.usePnp
 );
 
-function createApp(name, verbose, version, useNpm, usePnp, useTypescript) {
+async function createApp(
+  name,
+  verbose,
+  tools,
+  componentsVersion,
+  envVersion,
+  scriptsVersion,
+  sessionVersion,
+  utilsVersion,
+  useNpm,
+  usePnp
+) {
+  let useTools = tools || [];
+  if (!useTools.length && !isInteractive) {
+    console.log(
+      chalk.yellow(
+        `Rapido CLI is in non-interactive mode. We will not be asking if you want to add extra tools to your app. You can add them manually with the --tools option.`
+      )
+    );
+  } else if (!useTools.length) {
+    const answers = await inquirer.prompt([
+      {
+        type: 'checkbox',
+        name: 'tools',
+        message: 'Select tools to include',
+        pageSize: 5,
+        choices: [
+          {
+            name: 'TypeScript       Use TypeScript in your app',
+            value: 'typescript',
+          },
+          {
+            name: 'Environment      Manage environment variables',
+            value: 'env',
+          },
+          {
+            name: 'Components       Library of common primitive components',
+            value: 'components',
+          },
+          {
+            name: 'Session          Modules for managing session data',
+            value: 'session',
+          },
+          {
+            name: 'Utils            Library of common utilities',
+            value: 'utils',
+          },
+        ],
+      },
+    ]);
+
+    useTools = answers || [];
+  }
+
+  const useTypescript = useTools.includes('typescript');
+  const useEnv = useTools.includes('env');
+  const useComponents = useTools.includes('components');
+  const useSession = useTools.includes('session');
+  const useUtils = useTools.includes('utils');
   const unsupportedNodeVersion = !semver.satisfies(process.version, '>=8.10.0');
   if (unsupportedNodeVersion && useTypescript) {
     console.log(
@@ -276,12 +337,20 @@ function createApp(name, verbose, version, useNpm, usePnp, useTypescript) {
   run(
     root,
     appName,
-    version,
     verbose,
     originalDirectory,
+    scriptsVersion,
+    useTypescript,
+    useComponents,
+    componentsVersion,
+    useEnv,
+    envVersion,
+    useSession,
+    sessionVersion,
+    useUtils,
+    utilsVersion,
     useYarn,
-    usePnp,
-    useTypescript
+    usePnp
   );
 }
 
@@ -358,28 +427,49 @@ function install(root, useYarn, usePnp, dependencies, verbose, isOnline) {
 function run(
   root,
   appName,
-  version,
   verbose,
   originalDirectory,
+  scriptsVersion,
+  useTypescript,
+  useComponents,
+  componentsVersion,
+  useEnv,
+  envVersion,
+  useSession,
+  sessionVersion,
+  useUtils,
+  utilsVersion,
   useYarn,
-  usePnp,
-  useTypescript
+  usePnp
 ) {
-  getInstallPackage(version, originalDirectory).then(packageToInstall => {
-    const allDependencies = [packageToInstall];
-
+  Promise.all(
+    [
+      getInstallPackage('@rapido/scripts', scriptsVersion, originalDirectory),
+      useComponents &&
+        getInstallPackage(
+          '@rapido/components',
+          componentsVersion,
+          originalDirectory
+        ),
+      useEnv && getInstallPackage('@rapido/env', envVersion, originalDirectory),
+      useSession &&
+        getInstallPackage('@rapido/session', sessionVersion, originalDirectory),
+      useUtils &&
+        getInstallPackage('@rapido/utils', utilsVersion, originalDirectory),
+    ].filter(Boolean)
+  ).then(allDependencies => {
     console.log('Installing packages. This might take a couple of minutes.');
-    getPackageName(packageToInstall)
-      .then(packageName =>
+    Promise.all(allDependencies.map(dep => getPackageName(dep)))
+      .then(packageNames =>
         checkIfOnline(useYarn).then(isOnline => ({
           isOnline: isOnline,
-          packageName: packageName,
+          packageNames,
         }))
       )
-      .then(info => {
-        const isOnline = info.isOnline;
-        const packageName = info.packageName;
-        console.log(`Installing ${chalk.cyan(packageName)}...`);
+      .then(({ isOnline, packageNames }) => {
+        console.log(
+          `Installing ${packageNames.map(name => name).join(', ')}...`
+        );
         console.log();
 
         return install(
@@ -389,10 +479,10 @@ function run(
           allDependencies,
           verbose,
           isOnline
-        ).then(() => packageName);
+        ).then(() => packageNames);
       })
-      .then(async packageName => {
-        checkNodeVersion(packageName);
+      .then(async packageNames => {
+        packageNames.forEach(name => checkNodeVersion(name));
 
         const pnpPath = path.resolve(process.cwd(), '.pnp.js');
         const nodeArgs = fs.existsSync(pnpPath) ? ['--require', pnpPath] : [];
@@ -402,9 +492,19 @@ function run(
             cwd: process.cwd(),
             args: nodeArgs,
           },
-          [root, appName, verbose, originalDirectory, useTypescript],
+          [
+            root,
+            appName,
+            verbose,
+            originalDirectory,
+            useTypescript,
+            useComponents,
+            useEnv,
+            useSession,
+            useUtils,
+          ],
           `
-            var init = require('${packageName}/scripts/init.js');
+            var init = require('${packageNames[0]}/scripts/init.js');
             init.apply(null, JSON.parse(process.argv[1]));
           `
         );
@@ -455,8 +555,8 @@ function run(
   });
 }
 
-function getInstallPackage(version, originalDirectory) {
-  let packageToInstall = '@rapido/scripts';
+function getInstallPackage(name, version, originalDirectory) {
+  let packageToInstall = name;
   const validSemver = semver.valid(version);
   if (validSemver) {
     packageToInstall += `@${validSemver}`;

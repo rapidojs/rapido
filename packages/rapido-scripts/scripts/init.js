@@ -94,6 +94,9 @@ module.exports = function(
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
 
+  // Set main script
+  appPackage.main = 'node_modules/expo/AppEntry.js';
+
   // Setup the script rules
   appPackage.scripts = {
     start: 'rapido start',

@@ -1,7 +1,7 @@
 {
   "name": "@rapido/dev-utils",
   "version": "0.0.1",
-  "description": "Dev utilities used by Rapido",
+  "description": "Library of dev utilities for Rapido",
   "homepage": "https://rapidojs.dev/",
   "bugs": {
     "url": "https://github.com/rapidojs/rapido/issues",

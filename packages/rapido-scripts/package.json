@@ -1,7 +1,7 @@
 {
   "name": "@rapido/scripts",
   "version": "0.0.1",
-  "description": "Build universal react apps incredibly fast.",
+  "description": "Build universal React apps incredibly fast.",
   "keywords": [
     "expo",
     "react",

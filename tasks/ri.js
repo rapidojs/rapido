@@ -100,7 +100,7 @@ Object.keys(packagePathsByName).forEach(name => {
 console.log('Replaced all local dependencies for testing.');
 console.log('Do not edit any package.json while this task is running.');
 
-// Finally, pack rapido-scripts.
+// Finally, pack all rapido packages.
 // Don't redirect stdio as we want to capture the output that will be returned
 // from execSync(). In this case it will be the .tgz filename.
 const scriptsFileName = cp
@@ -108,6 +108,34 @@ const scriptsFileName = cp
   .toString()
   .trim();
 const scriptsPath = path.join(packagesDir, 'rapido-scripts', scriptsFileName);
+
+const envFileName = cp
+  .execSync(`npm pack`, { cwd: path.join(packagesDir, 'rapido-env') })
+  .toString()
+  .trim();
+const envPath = path.join(packagesDir, 'rapido-env', envFileName);
+
+const componentsFileName = cp
+  .execSync(`npm pack`, { cwd: path.join(packagesDir, 'rapido-components') })
+  .toString()
+  .trim();
+const componentsPath = path.join(
+  packagesDir,
+  'rapido-components',
+  componentsFileName
+);
+
+const sessionFileName = cp
+  .execSync(`npm pack`, { cwd: path.join(packagesDir, 'rapido-session') })
+  .toString()
+  .trim();
+const sessionPath = path.join(packagesDir, 'rapido-session', sessionFileName);
+
+const utilsFileName = cp
+  .execSync(`npm pack`, { cwd: path.join(packagesDir, 'rapido-utils') })
+  .toString()
+  .trim();
+const utilsPath = path.join(packagesDir, 'rapido-utils', utilsFileName);
 
 // Now that we have packed them, call the global CLI.
 cp.execSync('yarn cache clean');
@@ -117,7 +145,9 @@ const args = process.argv.slice(2);
 // Now run the RI command
 const riScriptPath = path.join(packagesDir, 'rapido-init', 'index.js');
 cp.execSync(
-  `node ${riScriptPath} ${args.join(' ')} --scripts-version="${scriptsPath}"`,
+  `node ${riScriptPath} ${args.join(
+    ' '
+  )} --scripts-version="${scriptsPath}" --env-version="${envPath}" --components-version="${componentsPath}" --session-version="${sessionPath}" --utils-version="${utilsPath}"`,
   {
     cwd: rootDir,
     stdio: 'inherit',

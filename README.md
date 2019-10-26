@@ -10,7 +10,7 @@
 
 <div align="center">
   <strong>
-    Build universal react apps incredibly fast.
+    Build universal native apps incredibly fast.
   </strong>
   <br />
   <br />
@@ -25,9 +25,9 @@
   </a>
 </div>
 
-**🚀 Fast**: Setup a universal react app by running one command and develop features fast with the Rapido toolset.
+**🚀 Fast**: A powerful toolset that runs on top of [Expo](https://expo.io) making it fast and easy to launch and build Expo apps.
 
-**👌 Convenient**: Stay up to date with the latest tools and libraries (React, React Native, ESLint, etc) with minimal effort.
+**👌 Convenient**: Stay up to date with the latest tools and libraries (Expo, React, ESLint, etc) with minimal effort.
 
 **🔓 Flexible**: No lock in. Use as much or as little of the Rapido toolset to serve your needs and eject at any time.
 
