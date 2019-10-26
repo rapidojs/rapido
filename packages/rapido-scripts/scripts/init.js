@@ -87,7 +87,7 @@ function walk(dir, done) {
     }
     var pending = list.length;
     if (!pending) {
-      return done(null, files);
+      return done(null, folders, files);
     }
     list.forEach(function(file) {
       file = path.resolve(dir, file);
@@ -239,6 +239,7 @@ module.exports = function(
   console.log('REMOVE: Going to walk templatePath', templatePath);
 
   if (fs.existsSync(templatePath)) {
+    console.log('REMOVE: starting walk');
     walk(templatePath, function(err, folders, files) {
       if (err) {
         console.error(
