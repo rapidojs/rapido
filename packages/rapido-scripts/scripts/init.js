@@ -250,7 +250,7 @@ module.exports = function(
       files.forEach(verifyAbsent);
 
       folders.forEach(folder => {
-        fs.mkdirSync(path.join(appPath, folder));
+        fs.mkdirSync(folder.replace(templatePath, appPath));
       });
 
       files.forEach(file => {
