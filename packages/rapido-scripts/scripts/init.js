@@ -370,6 +370,24 @@ module.exports = function(
         verifyTypeScriptSetup();
       }
 
+      if (usePrettier) {
+        const prettierCmd = path.resolve(appPath, 'node_modules/.bin/prettier');
+        const prettierArgs = [
+          '--trailing-comma',
+          'es5',
+          '--single-quote',
+          '--write',
+          `${appPath}**/*.{js,jsx,ts,tsx,json,css,scss,md}`,
+        ];
+        const prettierProc = spawn.sync(prettierCmd, prettierArgs, {
+          stdio: 'inherit',
+        });
+        if (prettierProc.status !== 0) {
+          console.error(`\`${command} ${args.join(' ')}\` failed`);
+          return;
+        }
+      }
+
       if (tryGitInit(appPath)) {
         console.log();
         console.log('Initialized a git repository.');
