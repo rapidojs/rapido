@@ -1,7 +1,7 @@
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import React, { Fragment, useState } from 'react';
-import { StatusBar, StyleSheet, Image, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
 // @remove-if-no-components-begin
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from '@rapido/components';
@@ -9,6 +9,8 @@ import { theme } from '@rapido/components';
 // @remove-if-no-session-begin
 import { SessionProvider, Session } from '@rapido/session';
 // @remove-if-no-session-end
+
+import MainView from './views/MainView';
 
 const session = new Session();
 
@@ -62,17 +64,7 @@ function App() {
         // @remove-if-no-components-end
         <Fragment>
           <StatusBar backgroundColor="transparent" barStyle="dark-content" />
-          <View style={styles.container}>
-            <Text style={styles.headerText}>Rapido</Text>
-            <Image
-              source={require('./assets/icon.png')}
-              style={{ marginVertical: 50, width: 192, height: 192 }}
-            />
-            <Text style={styles.bodyText}>
-              Edit <Text style={styles.boldText}>App.js</Text> and save to
-              reload.
-            </Text>
-          </View>
+          <MainView title="Rapido" />
         </Fragment>
         // @remove-if-no-components-begin
       </ThemeProvider>
@@ -81,26 +73,5 @@ function App() {
     // @remove-if-no-session-end
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#282c34',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 48,
-  },
-  bodyText: {
-    color: 'white',
-    fontSize: 18,
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-});
 
 export default App;
