@@ -193,6 +193,8 @@ async function createApp(
   useNpm,
   usePnp
 ) {
+  console.log(tools);
+  process.exit(1);
   let useTools = tools || [];
   if (!useTools.length && !isInteractive) {
     console.log(
