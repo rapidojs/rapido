@@ -86,7 +86,6 @@ function walk(dir, done) {
     if (err) {
       console.log('REMOVE: done with err', err);
       done(err);
-      return;
     }
     console.log('REMOVE: evaluating list', list);
     var pending = list.length;
