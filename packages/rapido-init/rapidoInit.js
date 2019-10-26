@@ -206,7 +206,7 @@ async function createApp(
         type: 'checkbox',
         name: 'tools',
         message: 'Select tools to include',
-        pageSize: 5,
+        pageSize: 6,
         choices: [
           {
             name: 'TypeScript       Use TypeScript in your app',
