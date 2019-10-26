@@ -129,12 +129,12 @@ function filterContent(content, key, useKey) {
     return '';
   }
   regex = RegExp(
-    `\\/\\/ @remove-if-no-${key}-begin([\\s\\S]*?)\\/\\/ @remove-if-no-${key}-end`,
+    `\\/\\/ @remove-if-no-${key}-begin\\n?([\\s\\S]*?)\\/\\/ @remove-if-no-${key}-end\\n?`,
     'gm'
   );
   filteredContent = filteredContent.replace(regex, useKey ? '$1' : '');
   regex = RegExp(
-    `\\/\\/ @remove-if-${key}-begin([\\s\\S]*?)\\/\\/ @remove-if-${key}-end`,
+    `\\/\\/ @remove-if-${key}-begin\\n?([\\s\\S]*?)\\/\\/ @remove-if-${key}-end\\n?`,
     'gm'
   );
   filteredContent =
