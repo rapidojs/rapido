@@ -81,12 +81,15 @@ function tryGitInit(appPath) {
 function walk(dir, done) {
   var folders = [];
   var files = [];
+  console.log('REMOVE: walking', dir);
   fs.readdir(dir, function(err, list) {
     if (err) {
+      console.log('REMOVE: done with err', err);
       return done(err);
     }
     var pending = list.length;
     if (!pending) {
+      console.log('REMOVE: done filders and files', folders, files);
       return done(null, folders, files);
     }
     list.forEach(function(file) {
@@ -98,12 +101,14 @@ function walk(dir, done) {
             folders = folders.concat(resFolders);
             files = files.concat(resFiles);
             if (!--pending) {
+              console.log('REMOVE: done filders and files', folders, files);
               done(null, folders, files);
             }
           });
         } else {
           files.push(file);
           if (!--pending) {
+            console.log('REMOVE: done filders and files', folders, files);
             done(null, folders, files);
           }
         }
