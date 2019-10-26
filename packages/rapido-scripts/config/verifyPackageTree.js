@@ -21,7 +21,6 @@ function verifyPackageTree() {
     // These are packages most likely to break in practice.
     // I have not included Babel here because plugins typically don't import Babel (so it's not affected).
     'babel-eslint',
-    'babel-jest',
     'eslint',
     'jest-expo',
   ];
