@@ -210,30 +210,33 @@ async function createApp(
         choices: [
           {
             name: 'TypeScript       Use TypeScript in your app',
+            short: 'TypeScript',
             value: 'typescript',
           },
           {
             name: 'Environment      Manage environment variables',
+            short: 'Environment',
             value: 'env',
           },
           {
             name: 'Components       Library of common primitive components',
+            short: 'Components',
             value: 'components',
           },
           {
             name: 'Session          Modules for managing session data',
+            short: 'Session',
             value: 'session',
           },
           {
             name: 'Utils            Library of common utilities',
+            short: 'Utils',
             value: 'utils',
           },
         ],
       },
     ]);
-    console.log(answers);
-    process.exit(1);
-    useTools = answers || [];
+    useTools = answers.tools || [];
   }
 
   const useTypescript = useTools.includes('typescript');
