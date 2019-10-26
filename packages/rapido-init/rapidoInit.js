@@ -205,7 +205,7 @@ async function createApp(
       {
         type: 'checkbox',
         name: 'tools',
-        message: 'Select tools to include in your app',
+        message: 'Confirm tools to include in your app',
         pageSize: 6,
         choices: [
           {
