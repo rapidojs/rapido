@@ -78,7 +78,7 @@ function tryGitInit(appPath) {
   }
 }
 
-function walk(dir, done) {
+function walk(dir, exclude, done) {
   var folders = [];
   var files = [];
 
@@ -93,23 +93,27 @@ function walk(dir, done) {
     }
     list.forEach(function(file) {
       file = path.resolve(dir, file);
-      fs.stat(file, function(err, stat) {
-        if (stat && stat.isDirectory()) {
-          folders.push(file);
-          walk(file, function(err, resFolders, resFiles) {
-            folders = folders.concat(resFolders);
-            files = files.concat(resFiles);
+      if (!exclude.includes(file)) {
+        fs.stat(file, function(err, stat) {
+          if (stat && stat.isDirectory()) {
+            folders.push(file);
+            walk(file, exclude, function(err, resFolders, resFiles) {
+              folders = folders.concat(resFolders);
+              files = files.concat(resFiles);
+              if (!--pending) {
+                done(null, folders, files);
+              }
+            });
+          } else {
+            files.push(file);
             if (!--pending) {
               done(null, folders, files);
             }
-          });
-        } else {
-          files.push(file);
-          if (!--pending) {
-            done(null, folders, files);
           }
-        }
-      });
+        });
+      } else if (!--pending) {
+        done(null, folders, files);
+      }
     });
   });
 }
@@ -215,11 +219,23 @@ module.exports = function(
     );
   }
 
-  // Copy the files for the user
+  // Copy the files with assets for the user
   const templatePath = path.join(
     ownPath,
     useTypeScript ? 'template-typescript' : 'template'
   );
+
+  const assetsPath = path.resolve(templatePath, 'assets');
+  if (fs.existsSync(assetsPath)) {
+    fs.mkdirSync(assetsPath.replace(templatePath, appPath));
+    fs.copySync(assetsPath, assetsPath.replace(templatePath, appPath));
+  }
+
+  const webPath = path.resolve(templatePath, 'web');
+  if (fs.existsSync(webPath)) {
+    fs.mkdirSync(webPath.replace(templatePath, appPath));
+    fs.copySync(webPath, webPath.replace(templatePath, appPath));
+  }
 
   function verifyAbsent(file) {
     if (fs.existsSync(path.join(appPath, file.replace(templatePath, '')))) {
@@ -237,7 +253,7 @@ module.exports = function(
   }
 
   if (fs.existsSync(templatePath)) {
-    walk(templatePath, function(err, folders, files) {
+    walk(templatePath, [assetsPath, webPath], function(err, folders, files) {
       if (err) {
         console.error(
           `Could not read template directory: ${chalk.green(templatePath)}`

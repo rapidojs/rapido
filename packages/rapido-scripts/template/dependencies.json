@@ -14,7 +14,6 @@
     "prettier": ""
   },
   "components": {
-    "styled-components": "^5.0.0-beta.11",
-    "styled-system": "^5.1.2"
+    "styled-components": "^5.0.0-beta.11"
   }
 }
