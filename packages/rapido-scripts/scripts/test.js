@@ -21,6 +21,7 @@ process.on('unhandledRejection', err => {
 
 // Ensure environment variables are read.
 require('../config/env');
+
 // @remove-on-eject-begin
 // Do the preflight check (only happens before eject).
 const verifyPackageTree = require('../config/verifyPackageTree');
@@ -30,6 +31,7 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 const verifyTypeScriptSetup = require('../config/verifyTypeScriptSetup');
 verifyTypeScriptSetup();
 // @remove-on-eject-end
+
 const jest = require('jest');
 const execSync = require('child_process').execSync;
 let argv = process.argv.slice(2);

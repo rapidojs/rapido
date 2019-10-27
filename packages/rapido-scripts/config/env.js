@@ -67,29 +67,23 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 // injected into the application via DefinePlugin in Webpack configuration.
 const RAPIDO = /^RAPIDO_/i;
 
-function getClientEnvironment() {
-  const raw = Object.keys(process.env)
-    .filter(key => RAPIDO.test(key))
-    .reduce(
-      (env, key) => {
-        env[key] = process.env[key];
-        return env;
-      },
-      {
-        // Useful for determining whether we’re running in production mode.
-        // Most importantly, it switches React into the correct mode.
-        NODE_ENV: process.env.NODE_ENV || 'development',
-      }
-    );
-  // Stringify all values so we can feed into Webpack DefinePlugin
-  const stringified = {
-    'process.env': Object.keys(raw).reduce((env, key) => {
-      env[key] = JSON.stringify(raw[key]);
+const raw = Object.keys(process.env)
+  .filter(key => RAPIDO.test(key))
+  .reduce(
+    (env, key) => {
+      env[key] = process.env[key];
       return env;
-    }, {}),
-  };
+    },
+    {
+      // Useful for determining whether we’re running in production mode.
+      // Most importantly, it switches React into the correct mode.
+      NODE_ENV: process.env.NODE_ENV || 'development',
+    }
+  );
 
-  return { raw, stringified };
+// Initialize @rapido/env if enabled
+const rapidoEnvPath = path.resolve(paths.appNodeModules, '@rapido/env');
+if (fs.existsSync(rapidoEnvPath)) {
+  const { init } = require(rapidoEnvPath);
+  init(raw);
 }
-
-module.exports = getClientEnvironment;

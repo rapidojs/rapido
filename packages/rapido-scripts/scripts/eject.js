@@ -149,14 +149,14 @@ inquirer
       let content = fs.readFileSync(file, 'utf8');
 
       // Skip flagged files
-      if (content.match(/\/\/ @remove-file-on-eject/)) {
+      if (content.match(/\/\/ @remove-file-on-eject\\n?/)) {
         return;
       }
       content =
         content
           // Remove dead code from .js files on eject
           .replace(
-            /\/\/ @remove-on-eject-begin([\s\S]*?)\/\/ @remove-on-eject-end/gm,
+            /\/\/ @remove-on-eject-begin\\n?([\s\S]*?)\/\/ @remove-on-eject-end\\n?/gm,
             ''
           )
           .trim() + '\n';
