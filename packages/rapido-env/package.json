@@ -1,6 +1,6 @@
 {
   "name": "@rapido/env",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Modules to manage environment variables in Rapido apps.",
   "keywords": [
     "rapido"
