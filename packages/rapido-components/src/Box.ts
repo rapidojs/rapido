@@ -7,7 +7,14 @@
 
 import { memo } from 'react';
 import styled from 'styled-components/native';
-import { color, compose, flexbox, layout, space } from 'styled-system';
+import {
+  color,
+  compose,
+  flexbox,
+  layout,
+  space,
+  typography,
+} from 'styled-system';
 import css, { get } from '@styled-system/css';
 
 import { BoxProps } from './types';
@@ -38,7 +45,8 @@ const Box = styled.View<BoxProps>(
     color,
     flexbox,
     layout,
-    space
+    space,
+    typography
   )
 );
 
