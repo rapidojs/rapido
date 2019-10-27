@@ -55,6 +55,9 @@ if (gitStatus.trim() !== '') {
   process.exit(1);
 }
 
+// Build packages
+cp.execSync('yarn build');
+
 const rootDir = path.join(__dirname, '..');
 const packagesDir = path.join(rootDir, 'packages');
 const packagePathsByName = {};
