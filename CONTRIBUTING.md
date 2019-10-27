@@ -65,17 +65,16 @@ and then run `yarn start` or `yarn test`.
 2. Close the milestone and create a new one for the next release.
 3. You don’t need to bump any of the package versions or publish them directly (the publish script will publish only changed packages).
 4. Note that files in `packages/rapido-init` should be modified with extreme caution. Since it’s a global CLI, any version of `rapido-init` (global CLI) including very old ones should work with the latest version of `rapido`.
-5. Run `yarn compile:lockfile`. The command will generate an updated lockfile in `packages/rapido-init` that should be committed.
-6. Create a change log entry for the release:
+5. Create a change log entry for the release:
 
 - You'll need an [access token for the GitHub API](https://help.github.com/articles/creating-an-access-token-for-command-line-use/). Save it to this environment variable: `export GITHUB_AUTH="..."`
 - Run `yarn changelog`. The command will find all the labeled pull requests merged since the last release and group them by the label and affected packages, and create a change log entry with all the changes and links to PRs and their authors. Copy and paste it to `CHANGELOG.md`.
 - Add a four-space indented paragraph after each non-trivial list item, explaining what changed and why. For each breaking change also write who it affects and instructions for migrating existing code.
 - Maybe add some newlines here and there. Preview the result on GitHub to get a feel for it. Changelog generator output is a bit too terse for my taste, so try to make it visually pleasing and well grouped.
 
-7. Make sure to include “Migrating from ...” instructions for the previous release. Often you can copy and paste them.
-8. Run `npm run publish`. (It has to be `npm run publish` exactly, not just `npm publish` or `yarn publish`.)
-9. Wait for a long time, and it will get published. Don’t worry that it’s stuck. In the end the publish script will prompt for versions before publishing the packages.
-10. After publishing, create a GitHub Release with the same text as the changelog entry. See previous Releases for inspiration.
+6. Make sure to include “Migrating from ...” instructions for the previous release. Often you can copy and paste them.
+7. Run `npm run publish`. (It has to be `npm run publish` exactly, not just `npm publish` or `yarn publish`.)
+8. Wait for a long time, and it will get published. Don’t worry that it’s stuck. In the end the publish script will prompt for versions before publishing the packages.
+9. After publishing, create a GitHub Release with the same text as the changelog entry. See previous Releases for inspiration.
 
 Make sure to test the released version! If you want to be extra careful, you can publish a prerelease by running `npm run publish -- --canary=next --exact --cd-version <major|minor|patch> --npm-tag=next` instead of `npm run publish`.

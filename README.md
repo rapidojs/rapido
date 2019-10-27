@@ -95,11 +95,11 @@ Runs the app in development mode.
 
 ### `npm test` or `yarn test`
 
-Runs the test watcher in an interactive mode.<br>
+Runs the test watcher in an interactive mode.
 
 ### `npm run build` or `yarn build`
 
-Builds the app for production.<br>
+Builds the app for production.
 
 ## User Guide
 

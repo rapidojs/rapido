@@ -209,7 +209,7 @@ async function createApp(
         pageSize: 6,
         choices: [
           {
-            name: 'TypeScript       Use TypeScript in your app',
+            name: 'TypeScript       Static type checker',
             short: 'TypeScript',
             value: 'typescript',
             checked: true,
@@ -221,7 +221,7 @@ async function createApp(
             checked: true,
           },
           {
-            name: 'Environment      Manage environment variables',
+            name: 'Environment      Modules to manage environment variables',
             short: 'Environment',
             value: 'env',
             checked: true,
@@ -233,7 +233,8 @@ async function createApp(
             checked: true,
           },
           {
-            name: 'Session          Modules for managing session data',
+            name:
+              'Session          Modules to managing session data and device storage',
             short: 'Session',
             value: 'session',
             checked: true,
@@ -331,24 +332,6 @@ async function createApp(
       usePnp = false;
     }
   }
-
-  // if (useYarn) {
-  //   let yarnUsesDefaultRegistry = true;
-  //   try {
-  //     yarnUsesDefaultRegistry =
-  //       execSync('yarnpkg config get registry')
-  //         .toString()
-  //         .trim() === 'https://registry.yarnpkg.com';
-  //   } catch (e) {
-  //     // ignore
-  //   }
-  //   if (yarnUsesDefaultRegistry) {
-  //     fs.copySync(
-  //       require.resolve('./yarn.lock.cached'),
-  //       path.join(root, 'yarn.lock')
-  //     );
-  //   }
-  // }
 
   run(
     root,

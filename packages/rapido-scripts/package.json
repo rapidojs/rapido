@@ -1,12 +1,9 @@
 {
   "name": "@rapido/scripts",
   "version": "0.0.1",
-  "description": "Build universal React apps incredibly fast.",
+  "description": "A library of scripts useed to develop Rapido apps.",
   "keywords": [
-    "expo",
-    "react",
-    "react-native",
-    "zero-configuration"
+    "rapido"
   ],
   "homepage": "https://rapidojs.dev/",
   "bugs": {

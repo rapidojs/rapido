@@ -1,9 +1,10 @@
 {
   "name": "@rapido/init",
   "version": "0.0.1",
-  "description": "Initialization script for creating Rapido apps.",
+  "description": "A CLI for creating Rapido apps.",
   "keywords": [
-    "react"
+    "react",
+    "rapido"
   ],
   "homepage": "https://rapidojs.dev/",
   "bugs": {
@@ -18,8 +19,7 @@
   "license": "MIT",
   "files": [
     "index.js",
-    "rapidoInit.js",
-    "yarn.lock.cached"
+    "rapidoInit.js"
   ],
   "bin": {
     "rapido-init": "./index.js"

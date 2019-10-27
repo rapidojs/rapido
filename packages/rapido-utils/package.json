@@ -1,12 +1,15 @@
 {
   "name": "@rapido/utils",
   "version": "0.0.1",
-  "description": "Library of common utilities for Rapido Apps.",
+  "description": "Library of common utilities used in Rapido apps.",
   "homepage": "https://rapidojs.dev/",
   "bugs": {
     "url": "https://github.com/rapidojs/rapido/issues",
     "email": "dev@verumtechnologies.com"
   },
+  "keywords": [
+    "rapido"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rapidojs/rapido.git",

@@ -1,10 +1,11 @@
 # @rapido/components
 
-This package includes a component library useful for building [Rapido](https://github.com/rapidojs/rapido) apps.<br>
-Please refer to its documentation:
+This package includes a library of common primitive components used in [Rapido](https://github.com/rapidojs/rapido) apps.
+
+Please refer to the Rapido documentation:
 
 - [Getting Started](https://rapidojs.dev/docs/getting-started) – How to create a new app.
-- [Utils User Guide](https://rapidojs.dev/) – How to develop apps bootstrapped with Rapido.
+- [User Guide](https://rapidojs.dev/) – How to develop apps bootstrapped with Rapido.
 
 ## Installation
 
