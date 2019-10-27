@@ -13,7 +13,7 @@ import { TextProps } from './types';
 
 // Text - Responsive typography component
 const Text = React.memo<TextProps>(props => (
-  <Base themex="text" as={NativeText} {...props} />
+  <Base themex="text" variant="default" as={NativeText} {...props} />
 ));
 
 export default Text;
