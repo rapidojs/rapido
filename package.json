@@ -9,7 +9,7 @@
     "clean": "lerna exec -- rm -rf dist",
     "format": "prettier --trailing-comma es5 --single-quote --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "lint": "eslint .",
-    "publish": "tasks/publish.sh",
+    "publish": "sh tasks/publish.sh",
     "rapido-init": "node tasks/ri.js",
     "reset": "sh tasks/reset-dev-env.sh",
     "test": "lerna run --parallel test"
