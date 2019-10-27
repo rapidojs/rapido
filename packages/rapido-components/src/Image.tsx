@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 import { Image as NativeImage } from 'react-native';
 
 import Box from './Box';
@@ -22,4 +22,4 @@ const Image = (props: ImageProps) => (
   />
 );
 
-export default memo(Image);
+export default Image;

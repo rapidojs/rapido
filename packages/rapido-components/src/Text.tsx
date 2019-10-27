@@ -5,13 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 import { Text as NativeText } from 'react-native';
 
 import Box from './Box';
 import { TextProps } from './types';
 
 // Text - Responsive typography component
-const Text = (props: TextProps) => <Box tx="text" as={NativeText} {...props} />;
+const Text = (props: TextProps) => (
+  <Box themex="text" as={NativeText} {...props} />
+);
 
-export default memo(Text);
+export default Text;

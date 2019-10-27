@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 
 import Button from './Button';
 import { LinkProps } from './types';
@@ -13,4 +13,4 @@ import { LinkProps } from './types';
 // Link - Styled link component
 const Link = (props: LinkProps) => <Button variant="link" {...props} />;
 
-export default memo(Link);
+export default Link;

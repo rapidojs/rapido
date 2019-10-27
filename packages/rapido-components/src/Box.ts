@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { memo } from 'react';
 import styled from 'styled-components/native';
 import {
   color,
@@ -21,16 +20,17 @@ import { BoxProps } from './types';
 
 const base = ({ __style, theme }: { __style?: object; theme: object }) =>
   css(__style)(theme);
-const sx = ({ sx, theme }: { sx?: object; theme: object }) => css(sx)(theme);
+const stylex = ({ stylex, theme }: { stylex?: object; theme: object }) =>
+  css(stylex)(theme);
 const variant = ({
   theme,
   variant = '',
-  tx = 'variants',
+  themex = 'variants',
 }: {
   theme: object;
   variant?: string | string[];
-  tx?: any;
-}) => css(get(theme, tx + '.' + variant, get(theme, variant)))(theme);
+  themex?: any;
+}) => css(get(theme, themex + '.' + variant, get(theme, variant)))(theme);
 
 // Box - Responsive box-model layout component
 const Box = styled.View<BoxProps>(
@@ -40,7 +40,7 @@ const Box = styled.View<BoxProps>(
   },
   base,
   variant,
-  sx,
+  stylex,
   compose(
     color,
     flexbox,
@@ -50,4 +50,4 @@ const Box = styled.View<BoxProps>(
   )
 );
 
-export default memo(Box);
+export default Box;

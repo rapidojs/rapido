@@ -26,8 +26,8 @@ type BaseBoxProps = ColorProps &
   LayoutProps &
   SpaceProps &
   TypographyProps & {
-    sx?: object;
-    tx?: string;
+    stylex?: object;
+    themex?: string;
     __style?: object;
     variant?: string | string[];
     children?: any;

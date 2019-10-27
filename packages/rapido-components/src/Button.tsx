@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 import {
   Text,
   Platform,
@@ -48,7 +48,7 @@ const Button = ({
       accessibilityLabel={accessibilityLabel}
     >
       <Box
-        tx="buttons"
+        themex="buttons"
         variant="primary"
         as={Text}
         {...props}
@@ -69,4 +69,4 @@ const Button = ({
   );
 };
 
-export default memo(Button);
+export default Button;

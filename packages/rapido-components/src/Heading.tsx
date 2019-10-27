@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 import { Text as NativeText } from 'react-native';
 
 import Box from './Box';
@@ -14,7 +14,7 @@ import { HeadingProps } from './types';
 // Heading - Extension of the Text component for headings
 const Heading = (props: HeadingProps) => (
   <Box
-    tx="text"
+    themex="text"
     as={NativeText}
     variant="heading"
     {...props}
@@ -26,4 +26,4 @@ const Heading = (props: HeadingProps) => (
   />
 );
 
-export default memo(Heading);
+export default Heading;
