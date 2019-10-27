@@ -1,6 +1,6 @@
 {
   "name": "@rapido/session",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Modules for managing session data in Rapido apps.",
   "homepage": "https://rapidojs.dev/",
   "bugs": {
