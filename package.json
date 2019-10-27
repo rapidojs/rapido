@@ -6,6 +6,7 @@
   "scripts": {
     "build": "lerna run --parallel build",
     "changelog": "lerna-changelog",
+    "clean": "lerna exec -- rm -rf dist",
     "compile:lockfile": "node tasks/compile-lockfile.js",
     "format": "prettier --trailing-comma es5 --single-quote --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "lint": "eslint .",
