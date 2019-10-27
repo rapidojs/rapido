@@ -7,12 +7,11 @@
 
 import React from 'react';
 
-import Button from './Button';
-import { LinkProps } from './types';
+import Base from './Base';
+import { BoxProps } from './types';
 
-// Link - Styled link component
-const Link = React.memo<LinkProps>(props => (
-  <Button variant="link" {...props} />
-));
+// @ts-ignore
+// Box - Responsive box-model layout component
+const Box = React.memo<BoxProps>(props => <Base {...props} />);
 
-export default Link;
+export default Box;

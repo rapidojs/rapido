@@ -8,18 +8,18 @@
 import React from 'react';
 import { Image as NativeImage } from 'react-native';
 
-import Box from './Box';
+import Base from './Base';
 import { ImageProps } from './types';
 
 // Image - Responsive image component with variants
-const Image = (props: ImageProps) => (
-  <Box
+const Image = React.memo<ImageProps>(props => (
+  <Base
     as={NativeImage}
     {...props}
     __style={{
       maxWidth: '100%',
     }}
   />
-);
+));
 
 export default Image;

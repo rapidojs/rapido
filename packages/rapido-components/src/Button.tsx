@@ -14,59 +14,55 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 
-import Box from './Box';
+import Base from './Base';
 import { ButtonProps } from './types';
 
 // Button - Button component with variants
-const Button = ({
-  onPress,
-  children,
-  disabled,
-  accessibilityLabel,
-  ...props
-}: ButtonProps) => {
-  let Touchable;
-  switch (Platform.OS) {
-    case 'android':
-      Touchable = (props: any) => <TouchableNativeFeedback {...props} />;
-      break;
-    case 'ios':
-      Touchable = (props: any) => <TouchableOpacity {...props} />;
-      break;
-    default:
-      Touchable = (props: any) => (
-        <TouchableHighlight underlayColor="rgba(0, 0, 0, 0)" {...props} />
-      );
-      break;
-  }
+const Button = React.memo<ButtonProps>(
+  ({ onPress, children, disabled, accessibilityLabel, ...props }) => {
+    let Touchable;
+    switch (Platform.OS) {
+      case 'android':
+        Touchable = (props: any) => <TouchableNativeFeedback {...props} />;
+        break;
+      case 'ios':
+        Touchable = (props: any) => <TouchableOpacity {...props} />;
+        break;
+      default:
+        Touchable = (props: any) => (
+          <TouchableHighlight underlayColor="rgba(0, 0, 0, 0)" {...props} />
+        );
+        break;
+    }
 
-  return (
-    <Touchable
-      onPress={onPress}
-      disabled={disabled}
-      accessibilityRole="button"
-      accessibilityLabel={accessibilityLabel}
-    >
-      <Box
-        themex="buttons"
-        variant="primary"
-        as={Text}
-        {...props}
-        __style={{
-          px: 3,
-          py: 2,
-          bg: 'primary',
-          color: 'white',
-          borderRadius: 4,
-          overflow: 'hidden',
-          textAlign: 'center',
-          textDecoration: 'none',
-        }}
+    return (
+      <Touchable
+        onPress={onPress}
+        disabled={disabled}
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel}
       >
-        {children}
-      </Box>
-    </Touchable>
-  );
-};
+        <Base
+          themex="buttons"
+          variant="primary"
+          as={Text}
+          {...props}
+          __style={{
+            px: 3,
+            py: 2,
+            bg: 'primary',
+            color: 'white',
+            borderRadius: 4,
+            overflow: 'hidden',
+            textAlign: 'center',
+            textDecoration: 'none',
+          }}
+        >
+          {children}
+        </Base>
+      </Touchable>
+    );
+  }
+);
 
 export default Button;

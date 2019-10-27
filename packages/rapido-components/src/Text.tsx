@@ -8,12 +8,12 @@
 import React from 'react';
 import { Text as NativeText } from 'react-native';
 
-import Box from './Box';
+import Base from './Base';
 import { TextProps } from './types';
 
 // Text - Responsive typography component
-const Text = (props: TextProps) => (
-  <Box themex="text" as={NativeText} {...props} />
-);
+const Text = React.memo<TextProps>(props => (
+  <Base themex="text" as={NativeText} {...props} />
+));
 
 export default Text;

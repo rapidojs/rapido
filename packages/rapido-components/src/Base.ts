@@ -16,7 +16,7 @@ import {
 } from 'styled-system';
 import css, { get } from '@styled-system/css';
 
-import { BoxProps } from './types';
+import { BaseProps } from './types';
 
 const base = ({ __style, theme }: { __style?: object; theme: object }) =>
   css(__style)(theme);
@@ -32,8 +32,8 @@ const variant = ({
   themex?: any;
 }) => css(get(theme, themex + '.' + variant, get(theme, variant)))(theme);
 
-// Box - Responsive box-model layout component
-const Box = styled.View<BoxProps>(
+// Base - Base component for all other components
+const Base = styled.View<BaseProps>(
   {
     margin: 0,
     minWidth: 0,
@@ -50,4 +50,4 @@ const Box = styled.View<BoxProps>(
   )
 );
 
-export default Box;
+export default Base;

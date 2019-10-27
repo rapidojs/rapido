@@ -21,7 +21,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 
-type BaseBoxProps = ColorProps &
+export type BaseProps = ColorProps &
   FlexboxProps &
   LayoutProps &
   SpaceProps &
@@ -33,19 +33,19 @@ type BaseBoxProps = ColorProps &
     children?: any;
   };
 
-export type BoxProps = NativeBoxProps & BaseBoxProps;
+export type BoxProps = NativeBoxProps & BaseProps;
 
 export type ButtonProps = NativeButtonProps &
-  BaseBoxProps & {
+  BaseProps & {
     disabled?: boolean;
     accessibilityLabel?: string;
     onPress?: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
   };
 
-export type ImageProps = NativeImageProps & BaseBoxProps;
+export type ImageProps = NativeImageProps & BaseProps;
 
 export type LinkProps = ButtonProps;
 
-export type TextProps = NativeTextProps & BaseBoxProps;
+export type TextProps = NativeTextProps & BaseProps;
 
 export type HeadingProps = TextProps;

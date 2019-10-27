@@ -8,12 +8,12 @@
 import React from 'react';
 import { Text as NativeText } from 'react-native';
 
-import Box from './Box';
+import Base from './Base';
 import { HeadingProps } from './types';
 
 // Heading - Extension of the Text component for headings
-const Heading = (props: HeadingProps) => (
-  <Box
+const Heading = React.memo<HeadingProps>(props => (
+  <Base
     themex="text"
     as={NativeText}
     variant="heading"
@@ -24,6 +24,6 @@ const Heading = (props: HeadingProps) => (
       fontWeight: 'heading',
     }}
   />
-);
+));
 
 export default Heading;
