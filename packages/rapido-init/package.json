@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "A CLI for creating Rapido apps.",
   "keywords": [
-    "react",
-    "rapido"
+    "rapido",
+    "react"
   ],
   "homepage": "https://rapidojs.dev/",
   "bugs": {

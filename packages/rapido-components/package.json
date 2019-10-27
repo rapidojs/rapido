@@ -2,17 +2,17 @@
   "name": "@rapido/components",
   "version": "0.0.1",
   "description": "Library of common primitive components used in Rapido apps.",
+  "keywords": [
+    "rapido",
+    "react",
+    "styled-components",
+    "styled-system"
+  ],
   "homepage": "https://rapidojs.dev/",
   "bugs": {
     "url": "https://github.com/rapidojs/rapido/issues",
     "email": "dev@verumtechnologies.com"
   },
-  "keywords": [
-    "react",
-    "rapido",
-    "styled-components",
-    "styled-system"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rapidojs/rapido.git",

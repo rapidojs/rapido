@@ -2,14 +2,14 @@
   "name": "@rapido/env",
   "version": "0.0.1",
   "description": "Modules to manage environment variables in Rapido apps.",
+  "keywords": [
+    "rapido"
+  ],
   "homepage": "https://rapidojs.dev/",
   "bugs": {
     "url": "https://github.com/rapidojs/rapido/issues",
     "email": "dev@verumtechnologies.com"
   },
-  "keywords": [
-    "rapido"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rapidojs/rapido.git",
