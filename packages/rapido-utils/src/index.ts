@@ -8,3 +8,4 @@
 export { default as deserialize } from './deserialize';
 export { default as httpRequest } from './httpRequest';
 export { default as serialize } from './serialize';
+export { default as test } from './test';

@@ -12,7 +12,9 @@ import { SessionProvider, Session } from '@rapido/session';
 
 import MainView from './views/MainView';
 
+// @remove-if-no-session-begin
 const session = new Session();
+// @remove-if-no-session-end
 
 const initializeApp = () => {
   const cacheAssets = Asset.loadAsync([require('./assets/icon.png')]);
