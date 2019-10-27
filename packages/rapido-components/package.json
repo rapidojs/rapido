@@ -33,6 +33,8 @@
   },
   "dependencies": {
     "@styled-system/css": "^5.0.23",
+    "@types/styled-system": "^5.1.2",
+    "@types/styled-system__css": "^5.0.4",
     "styled-system": "^5.1.2"
   },
   "devDependencies": {
@@ -41,8 +43,6 @@
     "@types/react-native": "^0.57.65",
     "@types/react-test-renderer": "16.8.3",
     "@types/styled-components": "^4.1.19",
-    "@types/styled-system": "^5.1.2",
-    "@types/styled-system__css": "^5.0.4",
     "babel-preset-expo": "^7.1.0",
     "jest-expo": "^35.0.0",
     "react": "16.8.3",
