@@ -16,37 +16,37 @@ yarn add @rapido/env
 
 ```js
 // First initialize the env (e.g. during build process)
-import { init } from '@rapido/env';
+import { initEnv } from '@rapido/env';
 
 // First initialize
-init({ NODE_ENV: 'development' });
+initEnv({ NODE_ENV: 'development' });
 ```
 
 ```jsx
 // Later in code you can access env vars after the package has been initialized
-import { get } from '@rapido/env';
+import { getEnv } from '@rapido/env';
 
-console.log(get('NODE_ENV'));
+console.log(getEnv('NODE_ENV'));
 ```
 
 ## API
 
-#### `init(envars: { [key: string]: string }): void`
+#### `initEnv(envars: { [key: string]: string }): void`
 
 Accepts an object of environment values and stores them for later.
 
 ```js
-import { init } from '@rapido/env';
+import { initEnv } from '@rapido/env';
 
-init({ NODE_ENV: 'development' });
+initEnv({ NODE_ENV: 'development' });
 ```
 
-#### `get(key: string): string`
+#### `getEnv(key: string): string`
 
 Accepts a key string and returns the env variable value for that key.
 
 ```js
-import { get } from '@rapido/env';
+import { getEnv } from '@rapido/env';
 
-console.log(get('NODE_ENV'));
+console.log(getEnv('NODE_ENV'));
 ```

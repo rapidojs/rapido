@@ -8,11 +8,11 @@
 import fs from 'fs';
 import path from 'path';
 
-import { init, get } from '../src';
+import { initEnv, getEnv } from '../src';
 
 describe('Env', () => {
   test('init', () => {
-    init({ KEY: 'Value' });
+    initEnv({ KEY: 'Value' });
     const envPath = path.resolve(__dirname, '../src', 'env.json');
     const rawdata = fs.readFileSync(envPath);
     const env = JSON.parse(rawdata.toString());
@@ -22,6 +22,6 @@ describe('Env', () => {
   });
 
   test('init', () => {
-    expect(get('NODE_ENV')).toBe('development');
+    expect(getEnv('NODE_ENV')).toBe('development');
   });
 });

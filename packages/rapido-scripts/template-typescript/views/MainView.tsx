@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 
-function MainView({ title }) {
+interface Props {
+  title: string;
+}
+
+function MainView({ title }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>{title}</Text>
