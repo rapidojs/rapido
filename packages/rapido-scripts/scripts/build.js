@@ -64,6 +64,7 @@ if (!platform) {
       'Please specify a platform to build for. Options are: --ios, --android, or --web'
     )
   );
+  process.exit(1);
 }
 // Run Expo Build
 const args = process.argv.slice(2);
