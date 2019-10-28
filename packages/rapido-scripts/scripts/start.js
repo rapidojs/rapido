@@ -47,4 +47,5 @@ const args = process.argv.slice(2);
 const result = spawn.sync('expo', ['start', ...args, paths.appPath], {
   stdio: 'inherit',
 });
+
 process.exit(result.status);

@@ -68,6 +68,7 @@ if (!platform) {
   );
   process.exit(1);
 }
+
 // Run Expo Build
 const args = process.argv.slice(3);
 const result = spawn.sync(
@@ -77,4 +78,5 @@ const result = spawn.sync(
     stdio: 'inherit',
   }
 );
+
 process.exit(result.status);

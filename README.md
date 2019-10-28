@@ -63,21 +63,23 @@ Inside that directory, it will generate the initial project structure and instal
 
 ```
 my-app
-├── .gitignore
-├── README.md
-├── package.json
-├── app.json
-├── App.js
-├── App.test.js
-├── babel.config.js
-├── node_modules
+├── __tests__
+│   └── MainView.test.js
 ├── assets
 │   ├── icon.png
 │   └── splash.png
-└── web
-    ├── favicon.ico
-    ├── index.html
-    └── manifest.json
+├── views
+│   └── MainView
+├── web
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── .gitignore
+├── App.js
+├── app.json
+├── babel.config.js
+├── package.json
+└── README.md
 ```
 
 No configuration or complicated folder structures, just the files you need to build your app.<br>
@@ -89,17 +91,21 @@ cd my-app
 
 Inside the newly created project, you can run some built-in commands such as:
 
-### `npm start` or `yarn start`
+### `npm lint` or `yarn lint`
 
-Runs the app in development mode.
+Runs eslint on the app.
+
+### `npm start:<platform>` or `yarn start:<platform>`
+
+Runs the app in development mode for the specified platform. Platform is one of (android, ios, or web).
 
 ### `npm test` or `yarn test`
 
 Runs the test watcher in an interactive mode.
 
-### `npm run build` or `yarn build`
+### `npm run build:<platform>` or `yarn build:<platform>`
 
-Builds the app for production.
+Builds the app for production for the specified platform. Platform is one of (android, ios, or web).
 
 ## User Guide
 
