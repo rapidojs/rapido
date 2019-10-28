@@ -1,6 +1,6 @@
 {
   "name": "@rapido/scripts",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A library of scripts useed to develop Rapido apps.",
   "keywords": [
     "rapido"
@@ -41,7 +41,7 @@
     ]
   },
   "dependencies": {
-    "@rapido/dev-utils": "^0.0.8",
+    "@rapido/dev-utils": "^0.0.9",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "babel-eslint": "10.0.3",
