@@ -84,6 +84,6 @@ const raw = Object.keys(process.env)
 // Initialize @rapido/env if enabled
 const rapidoEnvPath = path.resolve(paths.appNodeModules, '@rapido/env');
 if (fs.existsSync(rapidoEnvPath)) {
-  const { initEnv } = require(rapidoEnvPath);
+  const initEnv = require(`${rapidoEnvPath}/init`);
   initEnv(raw);
 }
