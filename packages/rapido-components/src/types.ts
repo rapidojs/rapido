@@ -37,6 +37,7 @@ export type BoxProps = NativeBoxProps & BaseProps;
 
 export type ButtonProps = NativeButtonProps &
   BaseProps & {
+    custom?: boolean;
     disabled?: boolean;
     accessibilityLabel?: string;
     onPress?: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
