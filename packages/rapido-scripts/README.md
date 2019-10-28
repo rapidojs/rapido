@@ -19,14 +19,18 @@ yarn add @rapido/scripts
 
 Runs eslint on the app.
 
-### `npm start` or `yarn start`
+### `npm start:<platform>` or `yarn start:<platform>`
 
-Runs the app in development mode.
+Runs the app in development mode for the specified platform. Platform is one of (android, ios, or web).
 
 ### `npm test` or `yarn test`
 
 Runs the test watcher in an interactive mode.
 
-### `npm run build` or `yarn build`
+### `npm run build:<platform>` or `yarn build:<platform>`
 
-Builds the app for production.
+Builds the app for production for the specified platform. Platform is one of (android, ios, or web).
+
+### `npm eject` or `yarn eject`
+
+Removes the scripts tool and copies build dependencies, configuration files and scripts into the app directory

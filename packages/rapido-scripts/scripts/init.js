@@ -170,11 +170,15 @@ module.exports = function(
 
   // Setup the script rules
   appPackage.scripts = {
-    start: 'rapido start',
-    build: 'rapido build',
-    test: 'rapido test',
+    'build:android': 'rapido build --android',
+    'build:ios': 'rapido build --ios',
+    'build:web': 'rapido build --web',
     eject: 'rapido eject',
     lint: 'rapido lint',
+    'start:android': 'rapido start --android',
+    'start:ios': 'rapido start --ios',
+    'start:web': 'rapido start --web',
+    test: 'rapido test',
   };
 
   if (useTypeScript) {
@@ -415,13 +419,19 @@ module.exports = function(
       console.log(`Success! Created ${appName} at ${appPath}`);
       console.log('Inside that directory, you can run several commands:');
       console.log();
-      console.log(chalk.cyan(`  ${displayedCommand} start`));
-      console.log('    Starts the development server.');
+      console.log(chalk.cyan(`  ${displayedCommand} start:<platform>`));
+      console.log(
+        '    Starts the development server for the specified platform (android, ios or web).'
+      );
       console.log();
       console.log(
-        chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`)
+        chalk.cyan(
+          `  ${displayedCommand} ${useYarn ? '' : 'run '}build:<platform>`
+        )
       );
-      console.log('    Bundles the app into static files for production.');
+      console.log(
+        '    Builds the app for production for the specified platform (android, ios or web).'
+      );
       console.log();
       console.log(chalk.cyan(`  ${displayedCommand} test`));
       console.log('    Starts the test runner.');
@@ -439,7 +449,7 @@ module.exports = function(
       console.log('We suggest that you begin by typing:');
       console.log();
       console.log(chalk.cyan('  cd'), cdpath);
-      console.log(`  ${chalk.cyan(`${displayedCommand} start`)}`);
+      console.log(`  ${chalk.cyan(`${displayedCommand} start:web`)}`);
       if (readmeExists) {
         console.log();
         console.log(

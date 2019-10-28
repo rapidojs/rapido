@@ -49,6 +49,8 @@ program
   .option('-a, --android', 'build for Android')
   .option('-w, --web', 'build for Web');
 
+program.parse(process.argv);
+
 let platform = '';
 if (program.ios) {
   platform = 'ios';
@@ -67,7 +69,7 @@ if (!platform) {
   process.exit(1);
 }
 // Run Expo Build
-const args = process.argv.slice(2);
+const args = process.argv.slice(3);
 const result = spawn.sync(
   'expo',
   [`build:${platform}`, ...args, paths.appPath],
