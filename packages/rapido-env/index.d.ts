@@ -5,11 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-'use strict';
+declare function get(key: string): string;
 
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-  };
-};
+export default get;

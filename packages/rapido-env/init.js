@@ -5,18 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import fs from 'fs';
-import path from 'path';
+'use strict';
 
-// @ts-ignore
-import env from './env.json';
+const fs = require('fs');
+const path = require('path');
 
-export function initEnv(envars: { [key: string]: string }) {
+function init(envars) {
   const envPath = path.resolve(__dirname, 'env.json');
   fs.writeFileSync(envPath, `${JSON.stringify(envars)}\n`);
 }
 
-export function getEnv(key: string) {
-  const envars = env as { [key: string]: string };
-  return envars && envars[key] ? envars[key] : '';
-}
+module.exports = init;
