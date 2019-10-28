@@ -20,8 +20,7 @@ const Heading = React.memo<HeadingProps>(props => (
     {...props}
     __style={{
       fontSize: 4,
-      fontFamily: 'heading',
-      fontWeight: 'heading',
+      fontWeight: '700',
     }}
   />
 ));
