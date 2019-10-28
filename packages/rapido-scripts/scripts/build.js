@@ -32,7 +32,9 @@ const verifyTypeScriptSetup = require('../config/verifyTypeScriptSetup');
 verifyTypeScriptSetup();
 // @remove-on-eject-end
 
+const chalk = require('@rapido/dev-utils/chalk');
 const spawn = require('@rapido/dev-utils/crossSpawn');
+const program = require('@rapido/dev-utils/commander');
 const checkRequiredFiles = require('@rapido/dev-utils/checkRequiredFiles');
 
 const paths = require('../config/paths');
@@ -42,9 +44,34 @@ if (!checkRequiredFiles([paths.appJson])) {
   process.exit(1);
 }
 
+program
+  .option('-i, --ios', 'build for iOS')
+  .option('-a, --android', 'build for Android')
+  .option('-w, --web', 'build for Web');
+
+let platform = '';
+if (program.ios) {
+  platform = 'ios';
+} else if (program.android) {
+  platform = 'android';
+} else if (program.web) {
+  platform = 'web';
+}
+
+if (!platform) {
+  console.log(
+    chalk.red(
+      'Please specify a platform to build for. Options are: --ios, --android, or --web'
+    )
+  );
+}
 // Run Expo Build
 const args = process.argv.slice(2);
-const result = spawn.sync('expo', ['build', ...args, paths.appPath], {
-  stdio: 'inherit',
-});
+const result = spawn.sync(
+  'expo',
+  [`build:${platform}`, ...args, paths.appPath],
+  {
+    stdio: 'inherit',
+  }
+);
 process.exit(result.status);

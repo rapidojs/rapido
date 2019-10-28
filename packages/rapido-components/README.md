@@ -33,7 +33,6 @@ This package includes the following availble components:
 
 - [Box](#box) - Responsive box-model layout component
 - [Text](#text) - Responsive typography component
-- [Heading](#heading) - Extension of the Text component for headings
 - [Button](#button) - Button component with variants
 - [Link](#link) - Styled link component
 - [Image](#image) - Responsive image component with variants
@@ -56,14 +55,6 @@ For full usage guide see the [documentation](https://rapidojs.dev/docs/component
 <Text fontWeight="bold" color="primary">
   Text
 </Text>
-```
-
-### Heading
-
-For full usage guide see the [documentation](https://rapidojs.dev/docs/components#heading).
-
-```jsx
-<Heading color="primary">Hello</Heading>
 ```
 
 ### Button

@@ -20,6 +20,7 @@
     "browsersHelper.js",
     "chalk.js",
     "checkRequiredFiles.js",
+    "commander.js",
     "crossSpawn.js",
     "globby.js",
     "ignoredFiles.js",
@@ -28,6 +29,7 @@
     "sortPackageJson.js"
   ],
   "dependencies": {
+    "commander": "2.20.0",
     "react-dev-utils": "^9.1.0",
     "sort-package-json": "^1.22.1"
   },
