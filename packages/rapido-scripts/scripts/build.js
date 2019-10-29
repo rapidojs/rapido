@@ -47,7 +47,8 @@ if (!checkRequiredFiles([paths.appJson])) {
 program
   .option('-i, --ios', 'build for iOS')
   .option('-a, --android', 'build for Android')
-  .option('-w, --web', 'build for Web');
+  .option('-w, --web', 'build for Web')
+  .allowUnknownOption();
 
 program.parse(process.argv);
 
