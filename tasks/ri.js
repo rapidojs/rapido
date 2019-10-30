@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const cp = require('child_process');
+const commander = require('commander');
 
 const cleanup = () => {
   console.log('Cleaning up.');
@@ -54,6 +55,14 @@ if (gitStatus.trim() !== '') {
   console.log();
   process.exit(1);
 }
+
+// Get template flag
+const program = new commander.Command()
+  .option(
+    '--template <path-to-template>',
+    'specify a template for the created project'
+  )
+  .parse(process.argv);
 
 // Build packages
 cp.execSync('yarn build');
@@ -106,6 +115,16 @@ console.log('Do not edit any package.json while this task is running.');
 // Finally, pack all rapido packages.
 // Don't redirect stdio as we want to capture the output that will be returned
 // from execSync(). In this case it will be the .tgz filename.
+const template = program.template || '';
+const templatePackage = `rapido-template${template ? `-${template}` : ''}`;
+const templateFileName = cp
+  .execSync(`npm pack`, {
+    cwd: path.join(packagesDir, templatePackage),
+  })
+  .toString()
+  .trim();
+const templatePath = path.join(packagesDir, templatePackage, templateFileName);
+
 const scriptsFileName = cp
   .execSync(`npm pack`, { cwd: path.join(packagesDir, 'rapido-scripts') })
   .toString()
@@ -150,7 +169,7 @@ const riScriptPath = path.join(packagesDir, 'rapido-init', 'index.js');
 cp.execSync(
   `node ${riScriptPath} ${args.join(
     ' '
-  )} --scripts-version="${scriptsPath}" --env-version="${envPath}" --components-version="${componentsPath}" --session-version="${sessionPath}" --utils-version="${utilsPath}"`,
+  )} --template="${templatePath}" --scripts-version="${scriptsPath}" --env-version="${envPath}" --components-version="${componentsPath}" --session-version="${sessionPath}" --utils-version="${utilsPath}"`,
   {
     cwd: rootDir,
     stdio: 'inherit',
