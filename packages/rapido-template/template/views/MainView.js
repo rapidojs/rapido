@@ -10,23 +10,9 @@ import {
 
 import packageJson from '../package.json';
 
-interface Props {
-  title: string;
-}
-
-function MainView({ title }: Props) {
+function MainView({ title }) {
   const dependencies: any = packageJson.dependencies;
   const allTools = [
-    {
-      key: 'prettier',
-      name: 'Prettier',
-      pkg: 'prettier',
-    },
-    {
-      key: 'typescript',
-      name: 'TypeScript',
-      pkg: 'typescript',
-    },
     {
       key: 'scripts',
       name: 'Scripts',
@@ -61,7 +47,7 @@ function MainView({ title }: Props) {
         style={{ marginVertical: 50, width: 192, height: 192 }}
       />
       <Text style={styles.bodyText}>
-        Edit <Text style={styles.boldText}>App.tsx</Text> and save to reload.
+        Edit <Text style={styles.boldText}>App.js</Text> and save to reload.
       </Text>
       <Text
         style={[
@@ -77,7 +63,7 @@ function MainView({ title }: Props) {
       </Text>
       <View style={styles.toolsContainer}>
         {allTools.map(
-          ({ key, name, pkg }: { key: string; name: string; pkg: string }) => (
+          ({ key, name, pkg }: { key: string, name: string, pkg: string }) => (
             <TouchableOpacity
               key={key}
               onPress={() =>

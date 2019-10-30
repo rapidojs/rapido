@@ -45,8 +45,4 @@ export type ButtonProps = NativeButtonProps &
 
 export type ImageProps = NativeImageProps & BaseProps;
 
-export type LinkProps = ButtonProps;
-
 export type TextProps = NativeTextProps & BaseProps;
-
-export type HeadingProps = TextProps;

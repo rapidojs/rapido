@@ -1,0 +1,32 @@
+{
+  "name": "@rapido/template",
+  "version": "0.0.18",
+  "description": "Base template for Rapido apps.",
+  "keywords": [
+    "rapido",
+    "react",
+    "template"
+  ],
+  "homepage": "https://rapidojs.dev/",
+  "bugs": {
+    "url": "https://github.com/rapidojs/rapido/issues",
+    "email": "dev@verumtechnologies.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rapidojs/rapido.git",
+    "directory": "packages/rapido-template"
+  },
+  "license": "MIT",
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "main": "template.json",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=8"
+  }
+}

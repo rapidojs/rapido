@@ -75,33 +75,4 @@ module.exports = {
   appTypeDeclarations: resolveApp('rapido-env.d.ts'),
   ownTypeDeclarations: resolveOwn('lib/rapido.d.ts'),
 };
-
-const ownPackageJson = require('../package.json');
-const reactScriptsPath = resolveApp(`node_modules/${ownPackageJson.name}`);
-const reactScriptsLinked =
-  fs.existsSync(reactScriptsPath) &&
-  fs.lstatSync(reactScriptsPath).isSymbolicLink();
-
-// config before publish: we're in ./packages/rapido-scripts/config/
-if (
-  !reactScriptsLinked &&
-  __dirname.indexOf(path.join('packages', 'rapido-scripts', 'config')) !== -1
-) {
-  module.exports = {
-    dotenv: resolveOwn('template/.env'),
-    appPath: resolveOwn('template/'),
-    appPackageJson: resolveOwn('package.json'),
-    appJson: resolveOwn('template/app.json'),
-    appTsConfig: resolveOwn('template/tsconfig.json'),
-    appJsConfig: resolveOwn('template/jsconfig.json'),
-    yarnLockFile: resolveOwn('template/yarn.lock'),
-    testsSetup: resolveModule(resolveOwn, 'template/setupTests'),
-    appNodeModules: resolveOwn('node_modules'),
-    // These properties only exist before ejecting:
-    ownPath: resolveOwn('.'),
-    ownNodeModules: resolveOwn('node_modules'),
-    appTypeDeclarations: resolveOwn('template/rapido-env.d.ts'),
-    ownTypeDeclarations: resolveOwn('lib/rapido.d.ts'),
-  };
-}
 // @remove-on-eject-end

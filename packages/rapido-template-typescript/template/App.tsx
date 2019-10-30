@@ -3,13 +3,15 @@ import { Asset } from 'expo-asset';
 import React, { Fragment, useState } from 'react';
 import { StatusBar } from 'react-native';
 // @remove-if-no-components-begin
-import { ThemeProvider } from 'styled-components/native';
-import { theme } from '@rapido/components';
+import { ThemeProvider } from '@rapido/components';
 // @remove-if-no-components-end
 // @remove-if-no-session-begin
 import { SessionProvider, Session } from '@rapido/session';
 // @remove-if-no-session-end
 
+// @remove-if-no-components-begin
+import theme from './theme';
+// @remove-if-no-components-end
 import MainView from './views/MainView';
 
 // @remove-if-no-session-begin

@@ -51,7 +51,7 @@ const Button = React.memo<ButtonProps>(
             __style={{
               px: 3,
               py: 2,
-              bg: '#61dbfb',
+              bg: 'primary',
               color: 'white',
               borderRadius: 4,
               overflow: 'hidden',

@@ -78,7 +78,7 @@ function tryGitInit(appPath) {
   }
 }
 
-function walk(dir, exclude, done) {
+function walk(dir, done) {
   var folders = [];
   var files = [];
 
@@ -93,25 +93,24 @@ function walk(dir, exclude, done) {
     }
     list.forEach(function(file) {
       file = path.resolve(dir, file);
-      if (!exclude.includes(file)) {
-        fs.stat(file, function(err, stat) {
-          if (stat && stat.isDirectory()) {
-            folders.push(file);
-            walk(file, exclude, function(err, resFolders, resFiles) {
-              folders = folders.concat(resFolders);
-              files = files.concat(resFiles);
-              if (!--pending) {
-                done(null, folders, files);
-              }
-            });
-          } else {
-            files.push(file);
+      fs.stat(file, function(err, stat) {
+        if (stat && stat.isDirectory()) {
+          folders.push(file);
+          walk(file, function(err, resFolders, resFiles) {
+            folders = folders.concat(resFolders);
+            files = files.concat(resFiles);
             if (!--pending) {
               done(null, folders, files);
             }
+          });
+        } else {
+          files.push(file);
+          if (!--pending) {
+            done(null, folders, files);
           }
-        });
-      } else if (!--pending) {
+        }
+      });
+      if (!--pending) {
         done(null, folders, files);
       }
     });
@@ -149,18 +148,60 @@ module.exports = function(
   appName,
   verbose,
   originalDirectory,
-  useTypeScript,
+  templateName,
   usePrettier,
   useComponents,
   useEnv,
   useSession,
   useUtils
 ) {
-  const ownPath = path.dirname(
-    require.resolve(path.join(__dirname, '..', 'package.json'))
-  );
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
+
+  if (!templateName) {
+    console.log('');
+    console.error('A template was not provided.');
+    return;
+  }
+
+  const templatePath = path.join(
+    require.resolve(templateName, { paths: [appPath] }),
+    '..'
+  );
+
+  let command;
+  let remove;
+  let args;
+
+  if (useYarn) {
+    command = 'yarnpkg';
+    remove = 'remove';
+    args = ['add'];
+  } else {
+    command = 'npm';
+    remove = 'uninstall';
+    args = ['install', '--save', verbose && '--verbose'].filter(e => e);
+  }
+
+  // Install prettier dependencies, if enabled
+  if (usePrettier) {
+    args = args.concat(['prettier', 'husky', 'lint-staged']);
+  }
+
+  // Install additional template dependencies, if present
+  const templateJsonPath = path.join(templatePath, 'template.json');
+  if (fs.existsSync(templateJsonPath)) {
+    const templateDependencies = require(templateJsonPath).dependencies;
+    args = args.concat(
+      Object.keys(templateDependencies).map(key => {
+        const version = templateDependencies[key];
+        return version ? `${key}@${version}` : key;
+      })
+    );
+    fs.unlinkSync(templateJsonPath);
+  }
+
+  const useTypeScript = args.find(arg => arg.includes('typescript'));
 
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
@@ -226,28 +267,13 @@ module.exports = function(
   }
 
   // Copy the files with assets for the user
-  const templatePath = path.join(
-    ownPath,
-    useTypeScript ? 'template-typescript' : 'template'
-  );
-
-  const assetsPath = path.resolve(templatePath, 'assets');
-  if (fs.existsSync(assetsPath)) {
-    fs.mkdirSync(assetsPath.replace(templatePath, appPath));
-    fs.copySync(assetsPath, assetsPath.replace(templatePath, appPath));
-  }
-
-  const webPath = path.resolve(templatePath, 'web');
-  if (fs.existsSync(webPath)) {
-    fs.mkdirSync(webPath.replace(templatePath, appPath));
-    fs.copySync(webPath, webPath.replace(templatePath, appPath));
-  }
+  const templateDir = path.join(templatePath, 'template');
 
   function verifyAbsent(file) {
-    if (fs.existsSync(path.join(appPath, file.replace(templatePath, '')))) {
+    if (fs.existsSync(path.join(appPath, file.replace(templateDir, '')))) {
       console.error(
         `\`${file.replace(
-          templatePath,
+          templateDir,
           ''
         )}\` already exists in your app folder. We cannot ` +
           'continue as you would lose all the changes in that file or directory. ' +
@@ -258,11 +284,11 @@ module.exports = function(
     }
   }
 
-  if (fs.existsSync(templatePath)) {
-    walk(templatePath, [assetsPath, webPath], function(err, folders, files) {
+  if (fs.existsSync(templateDir)) {
+    walk(templateDir, function(err, folders, files) {
       if (err) {
         console.error(
-          `Could not read template directory: ${chalk.green(templatePath)}`
+          `Could not read template directory: ${chalk.green(templateDir)}`
         );
         return;
       }
@@ -272,19 +298,22 @@ module.exports = function(
       files.forEach(verifyAbsent);
 
       folders.forEach(folder => {
-        fs.mkdirSync(folder.replace(templatePath, appPath));
+        fs.mkdirSync(folder.replace(templateDir, appPath));
       });
 
       files.forEach(file => {
-        let content = fs.readFileSync(file, 'utf8');
-        content = filterContent(content, 'components', useComponents);
+        const original = fs.readFileSync(file, 'utf8');
+        let content = filterContent(original, 'components', useComponents);
         content = filterContent(content, 'env', useEnv);
         content = filterContent(content, 'session', useSession);
         content = filterContent(content, 'utils', useUtils);
         if (!content) {
           return;
+        } else if (content === original) {
+          fs.copySync(file, file.replace(templateDir, appPath));
+        } else {
+          fs.writeFileSync(file.replace(templateDir, appPath), content);
         }
-        fs.writeFileSync(file.replace(templatePath, appPath), content);
       });
 
       // modifies README.md commands based on user used package manager.
@@ -327,53 +356,32 @@ module.exports = function(
         }
       }
 
-      let command;
-      let args;
+      if (args.length > 1) {
+        console.log();
+        console.log(`Installing template dependencies using ${command}...`);
 
-      if (useYarn) {
-        command = 'yarnpkg';
-        args = ['add'];
-      } else {
-        command = 'npm';
-        args = ['install', '--save', verbose && '--verbose'].filter(e => e);
-      }
-
-      // Install additional template dependencies, if present
-      const templateDependenciesPath = path.join(appPath, 'dependencies.json');
-      if (fs.existsSync(templateDependenciesPath)) {
-        const templateDependencies = require(templateDependenciesPath);
-        [
-          { key: 'default', useKey: true },
-          { key: 'prettier', useKey: usePrettier },
-          { key: 'components', useKey: useComponents },
-          { key: 'env', useKey: useEnv },
-          { key: 'session', useKey: useSession },
-          { key: 'utils', useKey: useUtils },
-        ].forEach(({ key, useKey }) => {
-          if (useKey && templateDependencies[key]) {
-            args = args.concat(
-              Object.keys(templateDependencies[key]).map(pkg => {
-                const version = templateDependencies[key][pkg];
-                return version ? `${pkg}@${version}` : pkg;
-              })
-            );
-          }
-        });
-
-        fs.unlinkSync(templateDependenciesPath);
-      }
-
-      console.log(`Installing dependencies using ${command}...`);
-      console.log();
-
-      const proc = spawn.sync(command, args, { stdio: 'inherit' });
-      if (proc.status !== 0) {
-        console.error(`\`${command} ${args.join(' ')}\` failed`);
-        return;
+        const proc = spawn.sync(command, args, { stdio: 'inherit' });
+        if (proc.status !== 0) {
+          console.error(`\`${command} ${args.join(' ')}\` failed`);
+          return;
+        }
       }
 
       if (useTypeScript) {
+        console.log();
         verifyTypeScriptSetup();
+      }
+
+      // Remove template
+      console.log(`Removing template package using ${command}...`);
+      console.log();
+
+      const proc = spawn.sync(command, [remove, templateName], {
+        stdio: 'inherit',
+      });
+      if (proc.status !== 0) {
+        console.error(`\`${command} ${args.join(' ')}\` failed`);
+        return;
       }
 
       if (usePrettier) {
@@ -463,7 +471,7 @@ module.exports = function(
     });
   } else {
     console.error(
-      `Could not locate supplied template: ${chalk.green(templatePath)}`
+      `Could not locate supplied template: ${chalk.green(templateDir)}`
     );
     return;
   }

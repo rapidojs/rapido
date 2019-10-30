@@ -34,7 +34,6 @@ This package includes the following availble components:
 - [Box](#box) - Responsive box-model layout component
 - [Text](#text) - Responsive typography component
 - [Button](#button) - Button component with variants
-- [Link](#link) - Styled link component
 - [Image](#image) - Responsive image component with variants
 
 ### Box
@@ -73,14 +72,6 @@ For full usage guide see the [documentation](https://rapidojs.dev/docs/component
     Outline
   </Button>
 </Box>
-```
-
-### Link
-
-For full usage guide see the [documentation](https://rapidojs.dev/docs/components#link).
-
-```jsx
-<Link color="primary">Link</Link>
 ```
 
 ### Image

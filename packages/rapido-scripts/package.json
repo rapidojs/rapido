@@ -20,9 +20,7 @@
     "bin",
     "config",
     "lib",
-    "scripts",
-    "template",
-    "template-typescript"
+    "scripts"
   ],
   "types": "./lib/rapido.d.ts",
   "bin": {

@@ -79,8 +79,12 @@ const program = new commander.Command(packageJson.name)
   .option('--verbose', 'print additional logs')
   .option('--info', 'print environment debug info')
   .option(
-    '-t, --tools <tools>',
-    'comma separated list of rapido tools to add',
+    '--template <path-to-template>',
+    'specify a template for the created project'
+  )
+  .option(
+    '--tools <tools-to-add>',
+    'comma separated list of rapido tools to add (components, env, prettier, session, utils)',
     commaSeparatedList
   )
   .option(
@@ -92,7 +96,7 @@ const program = new commander.Command(packageJson.name)
     'use a non-standard version of @rapido/env'
   )
   .option(
-    '--scripts-version <alternative-script-package>',
+    '--scripts-version <alternative-scripts-package>',
     'use a non-standard version of @rapido/scripts'
   )
   .option(
@@ -171,6 +175,7 @@ function printValidationResults(results) {
 createApp(
   projectName,
   program.verbose,
+  program.template,
   program.tools,
   program.componentsVersion,
   program.envVersion,
@@ -184,6 +189,7 @@ createApp(
 async function createApp(
   name,
   verbose,
+  template,
   tools,
   componentsVersion,
   envVersion,
@@ -193,6 +199,37 @@ async function createApp(
   useNpm,
   usePnp
 ) {
+  let useTemplate = template || '';
+  if (!useTemplate && !isInteractive) {
+    console.log(
+      chalk.yello(
+        'Rapido CLI is in non-interactive mode. We will be using the default template. You can overwrite the template selection with the --template option.'
+      )
+    );
+  } else if (!useTemplate) {
+    const templateAnswer = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'template',
+        message: 'Choose a template:',
+        pageSize: 20,
+        choices: [
+          {
+            name: 'Default                  Automatic code formatter',
+            short: 'Default',
+            value: '',
+          },
+          {
+            name:
+              'Default (TypeScript)     Modules to manage environment variables',
+            short: 'Default (TypeScript)',
+            value: 'typescript',
+          },
+        ],
+      },
+    ]);
+    useTools = templateAnswer.template || '';
+  }
   let useTools = tools || [];
   if (!useTools.length && !isInteractive) {
     console.log(
@@ -201,19 +238,13 @@ async function createApp(
       )
     );
   } else if (!useTools.length) {
-    const answers = await inquirer.prompt([
+    const toolsAnswer = await inquirer.prompt([
       {
         type: 'checkbox',
         name: 'tools',
-        message: 'Confirm tools to include in your app',
-        pageSize: 6,
+        message: 'Choose tools to include in your app:',
+        pageSize: 20,
         choices: [
-          {
-            name: 'TypeScript       Static type checker',
-            short: 'TypeScript',
-            value: 'typescript',
-            checked: true,
-          },
           {
             name: 'Prettier         Automatic code formatter',
             short: 'Prettier',
@@ -248,24 +279,16 @@ async function createApp(
         ],
       },
     ]);
-    useTools = answers.tools || [];
+    useTools = toolsAnswer.tools || [];
   }
 
-  const useTypescript = useTools.includes('typescript');
   const usePrettier = useTools.includes('prettier');
   const useEnv = useTools.includes('env');
   const useComponents = useTools.includes('components');
   const useSession = useTools.includes('session');
   const useUtils = useTools.includes('utils');
   const unsupportedNodeVersion = !semver.satisfies(process.version, '>=8.10.0');
-  if (unsupportedNodeVersion && useTypescript) {
-    console.log(
-      chalk.red(
-        `You are using Node ${process.version} with the TypeScript template. Node 8.10 or higher is required to use TypeScript.\n`
-      )
-    );
-    process.exit(1);
-  } else if (unsupportedNodeVersion) {
+  if (unsupportedNodeVersion) {
     console.log(
       chalk.red(
         `You are using Node ${process.version}.\n\n` +
@@ -338,8 +361,8 @@ async function createApp(
     appName,
     verbose,
     originalDirectory,
+    template,
     scriptsVersion,
-    useTypescript,
     usePrettier,
     useComponents,
     componentsVersion,
@@ -429,8 +452,8 @@ function run(
   appName,
   verbose,
   originalDirectory,
+  template,
   scriptsVersion,
-  useTypescript,
   usePrettier,
   useComponents,
   componentsVersion,
@@ -445,6 +468,7 @@ function run(
 ) {
   Promise.all(
     [
+      getTemplateInstallPackage(template, originalDirectory),
       getInstallPackage('@rapido/scripts', scriptsVersion, originalDirectory),
       useComponents &&
         getInstallPackage(
@@ -500,7 +524,7 @@ function run(
             appName,
             verbose,
             originalDirectory,
-            useTypescript,
+            packageNames[0],
             usePrettier,
             useComponents,
             useEnv,
@@ -508,7 +532,7 @@ function run(
             useUtils,
           ],
           `
-            var init = require('${packageNames[0]}/scripts/init.js');
+            var init = require('${packageNames[1]}/scripts/init.js');
             init.apply(null, JSON.parse(process.argv[1]));
           `
         );
@@ -557,6 +581,31 @@ function run(
         process.exit(1);
       });
   });
+}
+
+function getTemplateInstallPackage(template, originalDirectory) {
+  let templateToInstall = '@rapido/template';
+  if (template) {
+    if (template.match(/^file:/)) {
+      templateToInstall = `file:${path.resolve(
+        originalDirectory,
+        template.match(/^file:(.*)?$/)[1]
+      )}`;
+    } else if (
+      template.includes('://') ||
+      template.match(/^.+\.(tgz|tar\.gz)$/)
+    ) {
+      // for tar.gz or alternative paths
+      templateToInstall = template;
+    } else if (template.startsWith(templateToInstall)) {
+      templateToInstall = template;
+    } else if (!template.startsWith(templateToInstall)) {
+      // Add prefix `cra-template` to non-prefixed templates.
+      templateToInstall += `-${template}`;
+    }
+  }
+
+  return Promise.resolve(templateToInstall);
 }
 
 function getInstallPackage(name, version, originalDirectory) {

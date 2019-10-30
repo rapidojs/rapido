@@ -59,28 +59,7 @@ npx @rapido/init my-app
 ```
 
 It will create a directory called `my-app` inside the current folder.<br>
-Inside that directory, it will generate the initial project structure and install the transitive dependencies:
-
-```
-my-app
-├── __tests__
-│   └── MainView.test.js
-├── assets
-│   ├── icon.png
-│   └── splash.png
-├── views
-│   └── MainView
-├── web
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-├── .gitignore
-├── App.js
-├── app.json
-├── babel.config.js
-├── package.json
-└── README.md
-```
+Inside that directory, it will generate the initial project structure and install the transitive dependencies
 
 No configuration or complicated folder structures, just the files you need to build your app.<br>
 Once the installation is done, you can open your project folder:
@@ -97,7 +76,7 @@ Runs eslint on the app.
 
 ### `npm start:<platform>` or `yarn start:<platform>`
 
-Runs the app in development mode for the specified platform. Platform is one of (android, ios, or web).
+Runs the app in development mode for the specified platform. Platform can be one of (android, ios, or web).
 
 ### `npm test` or `yarn test`
 
@@ -105,7 +84,11 @@ Runs the test watcher in an interactive mode.
 
 ### `npm run build:<platform>` or `yarn build:<platform>`
 
-Builds the app for production for the specified platform. Platform is one of (android, ios, or web).
+Builds the app for production for the specified platform. Platform can be one of (android, ios, or web).
+
+### `npm run publish`
+
+Publishes your project to [Expo](https://expo.io) for over the air updates.
 
 ## User Guide
 
