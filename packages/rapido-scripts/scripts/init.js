@@ -155,6 +155,7 @@ module.exports = function(
   useSession,
   useUtils
 ) {
+  console.log('Template name is ', templateName);
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
 
