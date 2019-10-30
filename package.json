@@ -53,8 +53,8 @@
     "*dist",
     "node_modules",
     "my-app",
-    "packages/rapido-scripts/template",
-    "packages/rapido-scripts/template-typescript"
+    "packages/rapido-template/template",
+    "packages/rapido-template-typescript/template"
   ],
   "devDependencies": {
     "eslint": "^6.1.0",
