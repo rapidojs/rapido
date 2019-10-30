@@ -155,7 +155,6 @@ module.exports = function(
   useSession,
   useUtils
 ) {
-  console.log('Template name is ', templateName);
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
 
@@ -169,6 +168,7 @@ module.exports = function(
     require.resolve(templateName, { paths: [appPath] }),
     '..'
   );
+  console.log('Template path is', templatePath);
 
   let command;
   let remove;
@@ -269,6 +269,7 @@ module.exports = function(
 
   // Copy the files with assets for the user
   const templateDir = path.join(templatePath, 'template');
+  console.log('Template dir is', templateDir);
 
   function verifyAbsent(file) {
     if (fs.existsSync(path.join(appPath, file.replace(templateDir, '')))) {
