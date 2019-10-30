@@ -165,7 +165,6 @@ module.exports = function(
     require.resolve(templateName, { paths: [appPath] }),
     '..'
   );
-  console.log('Template path is', templatePath);
 
   let command;
   let remove;
@@ -266,7 +265,6 @@ module.exports = function(
 
   // Copy the files with assets for the user
   const templateDir = path.join(templatePath, 'template');
-  console.log('Template dir is', templateDir);
 
   function verifyAbsent(file) {
     if (fs.existsSync(path.join(appPath, file.replace(templateDir, '')))) {
@@ -285,7 +283,6 @@ module.exports = function(
 
   if (fs.existsSync(templateDir)) {
     walk(templateDir, function(err, folders, files) {
-      console.log('Folders and files are', folders, files);
       if (err) {
         console.error(
           `Could not read template directory: ${chalk.green(templateDir)}`
@@ -298,7 +295,6 @@ module.exports = function(
       files.forEach(verifyAbsent);
 
       folders.forEach(folder => {
-        console.log('Creating folder', folder);
         fs.mkdirSync(folder.replace(templateDir, appPath));
       });
 
@@ -309,13 +305,10 @@ module.exports = function(
         content = filterContent(content, 'session', useSession);
         content = filterContent(content, 'utils', useUtils);
         if (!content) {
-          console.log('Removing file', file);
           return;
         } else if (content === original) {
-          console.log('Copying file', file);
           fs.copySync(file, file.replace(templateDir, appPath));
         } else {
-          console.log('Writing file', file);
           fs.writeFileSync(file.replace(templateDir, appPath), content);
         }
       });
