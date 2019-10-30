@@ -110,9 +110,6 @@ function walk(dir, done) {
           }
         }
       });
-      if (!--pending) {
-        done(null, folders, files);
-      }
     });
   });
 }
