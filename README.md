@@ -14,6 +14,9 @@
   </strong>
   <br />
   <br />
+  <a href="https://npmjs.org/package/@rapido/scripts">
+    <img src="https://img.shields.io/npm/v/@rapido/scripts" alt="npm">
+  </a>
   <a href="https://github.com/rapidojs/rapido/actions?workflow=build">
     <img src="https://github.com/rapidojs/rapido/workflows/build/badge.svg" alt="build">
   </a>
