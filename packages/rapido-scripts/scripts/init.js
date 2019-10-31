@@ -299,6 +299,11 @@ module.exports = function(
       });
 
       files.forEach(file => {
+        let mediaRegex = new RegExp(/[\w-]+.(jpg|jpeg|png|ico|gif|mov|svg)/g);
+        if (file.match(mediaRegex)) {
+          fs.copySync(file, file.replace(templateDir, appPath));
+          return;
+        }
         const original = fs.readFileSync(file, 'utf8');
         let content = filterContent(original, 'components', useComponents);
         content = filterContent(content, 'env', useEnv);
@@ -306,11 +311,8 @@ module.exports = function(
         content = filterContent(content, 'utils', useUtils);
         if (!content) {
           return;
-        } else if (content === original) {
-          fs.copySync(file, file.replace(templateDir, appPath));
-        } else {
-          fs.writeFileSync(file.replace(templateDir, appPath), content);
         }
+        fs.writeFileSync(file.replace(templateDir, appPath), content);
       });
 
       // modifies README.md commands based on user used package manager.

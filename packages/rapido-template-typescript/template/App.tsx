@@ -67,7 +67,7 @@ function App() {
       <ThemeProvider theme={theme}>
         // @remove-if-no-components-end
         <Fragment>
-          <StatusBar backgroundColor="transparent" barStyle="dark-content" />
+          <StatusBar backgroundColor="transparent" barStyle="light-content" />
           <MainView title="Rapido" />
         </Fragment>
         // @remove-if-no-components-begin
