@@ -2,10 +2,10 @@
   "name": "@rapido/session",
   "version": "0.0.21",
   "description": "Modules for managing session data in Rapido apps.",
-  "homepage": "https://rapidojs.dev/",
   "keywords": [
     "rapido"
   ],
+  "homepage": "https://rapidojs.dev/",
   "bugs": {
     "url": "https://github.com/rapidojs/rapido/issues",
     "email": "dev@verumtechnologies.com"
