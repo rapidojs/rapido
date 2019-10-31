@@ -212,6 +212,7 @@ module.exports = function(
     'build:web': 'rapido build --web',
     eject: 'rapido eject',
     lint: 'rapido lint',
+    publish: 'rapido publish',
     'start:android': 'rapido start --android',
     'start:ios': 'rapido start --ios',
     'start:web': 'rapido start --web',

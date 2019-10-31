@@ -149,17 +149,16 @@ inquirer
       let content = fs.readFileSync(file, 'utf8');
 
       // Skip flagged files
-      if (content.match(/\/\/ @remove-file-on-eject\\n?/)) {
+      let regex = new RegExp('// @remove-file-on-eject\\n?');
+      if (content.match(regex)) {
         return;
       }
-      content =
-        content
-          // Remove dead code from .js files on eject
-          .replace(
-            /\/\/ @remove-on-eject-begin\\n?([\s\S]*?)\/\/ @remove-on-eject-end\\n?/gm,
-            ''
-          )
-          .trim() + '\n';
+      // Remove dead code from .js files on eject
+      regex = RegExp(
+        '\\/\\/ @remove-on-eject-begin\\n?([\\s\\S]*?)\\/\\/ @remove-on-eject-end\\n?',
+        'gm'
+      );
+      content = content.replace(regex, '').trim() + '\n';
       console.log(`  Adding ${cyan(file.replace(ownPath, ''))} to the project`);
       fs.writeFileSync(file.replace(ownPath, appPath), content);
     });
