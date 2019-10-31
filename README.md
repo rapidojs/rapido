@@ -70,13 +70,13 @@ cd my-app
 
 Inside the newly created project, you can run some built-in commands such as:
 
-### `npm lint` or `yarn lint`
-
-Runs eslint on the app.
-
 ### `npm start:<platform>` or `yarn start:<platform>`
 
 Runs the app in development mode for the specified platform. Platform can be one of (android, ios, or web).
+
+### `npm lint` or `yarn lint`
+
+Runs ESLint on the app code.
 
 ### `npm test` or `yarn test`
 
@@ -89,6 +89,10 @@ Builds the app for production for the specified platform. Platform can be one of
 ### `npm run publish`
 
 Publishes your project to [Expo](https://expo.io) for over the air updates.
+
+### `npm eject` or `yarn eject`
+
+Removes the scripts tool and copies build dependencies, configuration files and scripts into the app directory.
 
 ## User Guide
 

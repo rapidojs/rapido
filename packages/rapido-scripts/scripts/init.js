@@ -426,8 +426,15 @@ module.exports = function(
       console.log();
       console.log(chalk.cyan(`  ${displayedCommand} start:<platform>`));
       console.log(
-        '    Starts the development server for the specified platform (android, ios or web).'
+        '    Runs the app in development mode for the specified platform.'
       );
+      console.log('    Platform can be one of (android, ios, or web).');
+      console.log();
+      console.log(chalk.cyan(`  ${displayedCommand} lint`));
+      console.log('    Runs ESLint on the app code.');
+      console.log();
+      console.log(chalk.cyan(`  ${displayedCommand} test`));
+      console.log('    Runs the test watcher in an interactive mode.');
       console.log();
       console.log(
         chalk.cyan(
@@ -435,17 +442,20 @@ module.exports = function(
         )
       );
       console.log(
-        '    Builds the app for production for the specified platform (android, ios or web).'
+        '    Builds the app for production for the specified platform.'
       );
+      console.log('    Platform can be one of (android, ios, or web).');
       console.log();
-      console.log(chalk.cyan(`  ${displayedCommand} test`));
-      console.log('    Starts the test runner.');
+      console.log(chalk.cyan(`  npm run publish`));
+      console.log(
+        '    Publishes your project to Expo for over the air updates.'
+      );
       console.log();
       console.log(
         chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`)
       );
       console.log(
-        '    Removes this tool and copies build dependencies, configuration files'
+        '    Removes the scripts tool and copies build dependencies, configuration files'
       );
       console.log(
         '    and scripts into the app directory. If you do this, you can’t go back!'
