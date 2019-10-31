@@ -1,6 +1,6 @@
 {
   "name": "@rapido/dev-utils",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Library of dev utilities used in Rapido apps.",
   "keywords": [
     "rapido"

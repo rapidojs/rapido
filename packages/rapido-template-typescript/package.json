@@ -1,6 +1,6 @@
 {
   "name": "@rapido/template-typescript",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Base TypeScript template for Rapido apps.",
   "keywords": [
     "rapido",

@@ -1,6 +1,6 @@
 {
   "name": "@rapido/template",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Base template for Rapido apps.",
   "keywords": [
     "rapido",
