@@ -215,20 +215,20 @@ async function createApp(
         pageSize: 20,
         choices: [
           {
-            name: 'Default                  Automatic code formatter',
-            short: 'Default',
+            name: 'Blank                  Minimal app with empty canvas',
+            short: 'Blank',
             value: '',
           },
           {
             name:
-              'Default (TypeScript)     Modules to manage environment variables',
-            short: 'Default (TypeScript)',
+              'Blank (TypeScript)     Same as blank but with TypeScript configuration',
+            short: 'Blank (TypeScript)',
             value: 'typescript',
           },
         ],
       },
     ]);
-    useTools = templateAnswer.template || '';
+    useTemplate = templateAnswer.template || '';
   }
   let useTools = tools || [];
   if (!useTools.length && !isInteractive) {
