@@ -361,7 +361,7 @@ async function createApp(
     appName,
     verbose,
     originalDirectory,
-    template,
+    useTemplate,
     scriptsVersion,
     usePrettier,
     useComponents,
