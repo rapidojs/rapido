@@ -135,8 +135,7 @@ function filterContent(content, key, useKey) {
     `\\/\\/ @remove-if-${key}-begin\\n?([\\s\\S]*?)\\/\\/ @remove-if-${key}-end\\n?`,
     'gm'
   );
-  filteredContent =
-    filteredContent.replace(regex, useKey ? '' : '$1').trim() + '\n';
+  filteredContent = filteredContent.replace(regex, useKey ? '' : '$1');
   return filteredContent;
 }
 
@@ -312,7 +311,10 @@ module.exports = function(
         if (!content) {
           return;
         }
-        fs.writeFileSync(file.replace(templateDir, appPath), content);
+        fs.writeFileSync(
+          file.replace(templateDir, appPath),
+          content.trim() + '\n'
+        );
       });
 
       // modifies README.md commands based on user used package manager.
