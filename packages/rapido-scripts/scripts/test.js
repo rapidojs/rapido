@@ -21,7 +21,6 @@ process.on('unhandledRejection', err => {
 
 // Ensure environment variables are read.
 require('../config/env');
-
 // @remove-on-eject-begin
 // Do the preflight check (only happens before eject).
 const verifyPackageTree = require('../config/verifyPackageTree');
