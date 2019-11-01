@@ -28,9 +28,9 @@
   </a>
 </div>
 
-Rapido is an oppinionative collection of libraries built on top of [Expo](https://expo.io). Rapido helps solve some common problems in Expo apps across all platforms such as Navigation, Device Storage, Component Library, etc making it fast to develop Expo apps. Some of the benefits of using Rapido to build Expo apps are:
+Rapido is an oppinionative toolset that makes building universal native apps for iOS, Android and Web very fast and easy. Rapido is built on top of [Expo](https://expo.io) and helps solve some common problems in Expo apps such as Navigation, Device Storage, Component Library, etc. Some of the benefits of using Rapido to build Expo apps are:
 
-**🚀 Fast Development**: Rapido makes it fast to spin up and start developing features right away. No tedious boilerplate work.
+**🚀 Fast Development**: Rapido makes it fast to spin up an app and start developing features right away.
 
 **💪 Powerful Tools**: The Rapido toolset uses projects like Expo under the hood to power your app and solve common problems.
 
