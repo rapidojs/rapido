@@ -451,7 +451,7 @@ module.exports = function(
       );
       console.log('    Platform can be one of (android, ios, or web).');
       console.log();
-      console.log(chalk.cyan(`  npm run publish`));
+      console.log(chalk.cyan(`  ${displayedCommand} run publish`));
       console.log(
         '    Publishes your project to Expo for over the air updates.'
       );

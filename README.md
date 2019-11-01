@@ -89,7 +89,7 @@ Runs the test watcher in an interactive mode.
 
 Builds the app for production for the specified platform. Platform can be one of (android, ios, or web).
 
-### `npm run publish`
+### `npm run publish` or `yarn run publish`
 
 Publishes your project to [Expo](https://expo.io) for over the air updates.
 
