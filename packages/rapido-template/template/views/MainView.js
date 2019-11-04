@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#282c34',
+    backgroundColor: '#303846',
   },
   headerText: {
     fontSize: 48,
@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   boldText: {
-    color: '#61dbfb',
+    color: '#FDD023',
     fontWeight: 'bold',
   },
   textLink: {
     fontSize: 18,
-    color: '#61dbfb',
+    color: '#FDD023',
     marginVertical: 20,
     fontWeight: 'bold',
     textDecorationLine: 'underline',

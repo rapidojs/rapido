@@ -21,7 +21,7 @@ declare module 'styled-components' {
 // default theme
 const theme: DefaultTheme = {
   colors: {
-    primary: '#61dbfb',
+    primary: '#FDD023',
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
