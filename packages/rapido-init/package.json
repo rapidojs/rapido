@@ -1,6 +1,6 @@
 {
   "name": "@rapido/init",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A CLI for creating Rapido apps.",
   "keywords": [
     "rapido",

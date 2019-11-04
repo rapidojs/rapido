@@ -2,7 +2,7 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": ["packages/*"],
-  "version": "0.0.22",
+  "version": "0.0.23",
   "changelog": {
     "repo": "rapidojs/rapido",
     "labels": {
