@@ -36,7 +36,7 @@ Rapido is an oppinionative toolset that makes building universal native apps for
 
 **🔓 No Lock-In**: All Rapido tools are broken up into multiple packages and are all optional so you are never locked in.
 
-<p align="right"><em>See more on <a href="https://rapidojs.dev">rapidojs.dev</a></em></p>
+<p align="right"><em>See more on <a href="https://rapidojs.org">rapidojs.org</a></em></p>
 
 ## Quick Overview
 
@@ -47,7 +47,7 @@ yarn start
 ```
 
 - [Creating an App](#creating-an-app) – How to create a new app.
-- [User Guide](https://rapidojs.dev/) – How to develop apps bootstrapped with Rapido.
+- [User Guide](https://rapidojs.org/) – How to develop apps bootstrapped with Rapido.
 
 Rapido works on macOS, Windows, and Linux.<br>
 If something doesn’t work, please [file an issue](https://github.com/rapidojs/rapido/issues/new).<br>
@@ -99,11 +99,11 @@ Removes the scripts tool and copies build dependencies, configuration files and 
 
 ## User Guide
 
-You can find detailed instructions on using Rapido and many tips in [its documentation](https://rapidojs.dev/).
+You can find detailed instructions on using Rapido and many tips in [its documentation](https://rapidojs.org/).
 
 ## How to Update to New Versions?
 
-Please refer to the [User Guide](https://rapidojs.dev/docs/updating-to-new-releases) for this and other information.
+Please refer to the [User Guide](https://rapidojs.org/docs/updating-to-new-releases) for this and other information.
 
 ## Contributing
 

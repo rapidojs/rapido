@@ -23,7 +23,7 @@ function MainView({ title }: Props) {
       <Text style={styles.bodyText}>
         Edit <Text style={styles.boldText}>App.js</Text> and save to reload.
       </Text>
-      <TouchableOpacity onPress={() => Linking.openURL('https://rapidojs.dev')}>
+      <TouchableOpacity onPress={() => Linking.openURL('https://rapidojs.org')}>
         <Text style={styles.textLink}>View Docs</Text>
       </TouchableOpacity>
     </View>

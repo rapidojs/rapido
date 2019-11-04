@@ -4,8 +4,8 @@ This package includes a library of common primitive components used in [Rapido](
 
 Please refer to the Rapido documentation:
 
-- [Getting Started](https://rapidojs.dev/docs/getting-started) – How to create a new app.
-- [User Guide](https://rapidojs.dev/) – How to develop apps bootstrapped with Rapido.
+- [Getting Started](https://rapidojs.org/docs/getting-started) – How to create a new app.
+- [User Guide](https://rapidojs.org/) – How to develop apps bootstrapped with Rapido.
 
 ## Installation
 
@@ -38,7 +38,7 @@ This package includes the following availble components:
 
 ### Box
 
-For full usage guide see the [documentation](https://rapidojs.dev/docs/components#box).
+For full usage guide see the [documentation](https://rapidojs.org/docs/components#box).
 
 ```jsx
 <Box p={5} fontSize={4} color="white" bg="primary">
@@ -48,7 +48,7 @@ For full usage guide see the [documentation](https://rapidojs.dev/docs/component
 
 ### Text
 
-For full usage guide see the [documentation](https://rapidojs.dev/docs/components#text).
+For full usage guide see the [documentation](https://rapidojs.org/docs/components#text).
 
 ```jsx
 <Text fontWeight="bold" color="primary">
@@ -58,7 +58,7 @@ For full usage guide see the [documentation](https://rapidojs.dev/docs/component
 
 ### Button
 
-For full usage guide see the [documentation](https://rapidojs.dev/docs/components#button).
+For full usage guide see the [documentation](https://rapidojs.org/docs/components#button).
 
 ```jsx
 <Box>
@@ -76,7 +76,7 @@ For full usage guide see the [documentation](https://rapidojs.dev/docs/component
 
 ### Image
 
-For full usage guide see the [documentation](https://rapidojs.dev/docs/components#image).
+For full usage guide see the [documentation](https://rapidojs.org/docs/components#image).
 
 ```jsx
 <Image width={100} height={100} src={props.image} />

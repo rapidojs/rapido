@@ -30,6 +30,6 @@ Removes the scripts tool and copies build dependencies, configuration files and 
 
 ## Learn More
 
-You can learn more in the [Rapido documentation](https://rapidojs.dev/docs/getting-started).
+You can learn more in the [Rapido documentation](https://rapidojs.org/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).

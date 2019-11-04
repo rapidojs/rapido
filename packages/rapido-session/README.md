@@ -3,8 +3,8 @@
 This package includes modules to manage session in [Rapido](https://github.com/rapidojs/rapido) apps.<br>
 Please refer to its documentation:
 
-- [Getting Started](https://rapidojs.dev/docs/getting-started) – How to create a new app.
-- [User Guide](https://rapidojs.dev/) – How to develop apps bootstrapped with Rapido.
+- [Getting Started](https://rapidojs.org/docs/getting-started) – How to create a new app.
+- [User Guide](https://rapidojs.org/) – How to develop apps bootstrapped with Rapido.
 
 ## Installation
 

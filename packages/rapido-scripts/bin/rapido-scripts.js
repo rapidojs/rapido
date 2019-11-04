@@ -58,5 +58,5 @@ if (['build', 'eject', 'lint', 'publish', 'start', 'test'].includes(script)) {
 } else {
   console.log('Unknown script "' + script + '".');
   console.log('Perhaps you need to update @rapido/scripts?');
-  console.log('See: https://rapidojs.dev/docs/updating-to-new-releases');
+  console.log('See: https://rapidojs.org/docs/updating-to-new-releases');
 }

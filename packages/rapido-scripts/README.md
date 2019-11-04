@@ -4,8 +4,8 @@ This package includes a library of scripts useed to develop [Rapido](https://git
 
 Please refer to the Rapido documentation:
 
-- [Getting Started](https://rapidojs.dev/docs/getting-started) – How to create a new app.
-- [User Guide](https://rapidojs.dev/) – How to develop apps bootstrapped with Rapido.
+- [Getting Started](https://rapidojs.org/docs/getting-started) – How to create a new app.
+- [User Guide](https://rapidojs.org/) – How to develop apps bootstrapped with Rapido.
 
 ## Installation
 

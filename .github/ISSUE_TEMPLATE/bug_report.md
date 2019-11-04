@@ -62,12 +62,12 @@ labels: 'issue: bug report, needs triage'
   There are a few common documented problems, such as watcher not detecting changes, or build failing.
   They are described in the Troubleshooting section of the User Guide:
 
-  https://rapidojs.dev/docs/troubleshooting
+  https://rapidojs.org/docs/troubleshooting
 
   Please scan these few sections for common problems.
   Additionally, you can search the User Guide itself for something you're having issues with:
 
-  https://rapidojs.dev/
+  https://rapidojs.org/
 
   If you didn't find the solution, please share which words you searched for.
   This helps us improve documentation for future readers who might encounter the same problem.
