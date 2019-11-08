@@ -1,6 +1,6 @@
 {
   "name": "@rapido/components",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Library of common primitive components used in Rapido apps.",
   "keywords": [
     "components",
