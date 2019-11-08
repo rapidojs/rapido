@@ -217,6 +217,7 @@ module.exports = function(
     'start:ios': 'rapido start --ios',
     'start:web': 'rapido start --web',
     test: 'rapido test',
+    upgrade: 'rapido upgrade',
   };
 
   if (useTypeScript) {
@@ -328,9 +329,12 @@ module.exports = function(
           fs.writeFileSync(
             path.join(appPath, 'README.md'),
             readme
-              .replace(/npm start/g, 'yarn start')
+              .replace(/npm start:<platform>/g, 'yarn start:<platform>')
+              .replace(/npm lint/g, 'yarn lint')
               .replace(/npm test/g, 'yarn test')
-              .replace(/npm run build/g, 'yarn build')
+              .replace(/npm build:<platform>/g, 'yarn build:<platform>')
+              .replace(/npm run publish/g, 'yarn run publish')
+              .replace(/npm run upgrade/g, 'yarn run upgrade')
               .replace(/npm run eject/g, 'yarn eject'),
             'utf8'
           );
@@ -427,44 +431,7 @@ module.exports = function(
 
       console.log();
       console.log(`Success! Created ${appName} at ${appPath}`);
-      console.log('Inside that directory, you can run several commands:');
-      console.log();
-      console.log(chalk.cyan(`  ${displayedCommand} start:<platform>`));
-      console.log(
-        '    Runs the app in development mode for the specified platform.'
-      );
-      console.log('    Platform can be one of (android, ios, or web).');
-      console.log();
-      console.log(chalk.cyan(`  ${displayedCommand} lint`));
-      console.log('    Runs ESLint on the app code.');
-      console.log();
-      console.log(chalk.cyan(`  ${displayedCommand} test`));
-      console.log('    Runs the test watcher in an interactive mode.');
-      console.log();
-      console.log(
-        chalk.cyan(
-          `  ${displayedCommand} ${useYarn ? '' : 'run '}build:<platform>`
-        )
-      );
-      console.log(
-        '    Builds the app for production for the specified platform.'
-      );
-      console.log('    Platform can be one of (android, ios, or web).');
-      console.log();
-      console.log(chalk.cyan(`  ${displayedCommand} run publish`));
-      console.log(
-        '    Publishes your project to Expo for over the air updates.'
-      );
-      console.log();
-      console.log(
-        chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`)
-      );
-      console.log(
-        '    Removes the scripts tool and copies build dependencies, configuration files'
-      );
-      console.log(
-        '    and scripts into the app directory. If you do this, you can’t go back!'
-      );
+      console.log('Inside that directory, you can run several commands.');
       console.log();
       console.log('We suggest that you begin by typing:');
       console.log();
@@ -478,6 +445,11 @@ module.exports = function(
           )
         );
       }
+      console.log();
+      console.log(
+        'Please refer to the official Rapido documentation for the full user guide: ',
+        chalk.cyan('https://rapidojs.org/')
+      );
       console.log();
       console.log('Happy hacking!');
     });

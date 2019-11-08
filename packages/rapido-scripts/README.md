@@ -35,6 +35,10 @@ Builds the app for production for the specified platform. Platform can be one of
 
 Publishes your project to [Expo](https://expo.io) for over the air updates.
 
-### `npm eject` or `yarn eject`
+### `npm run upgrade` or `yarn run upgrade`
+
+Upgrades all Rapido and related dependencies.
+
+### `npm run eject` or `yarn eject`
 
 Removes the scripts tool and copies build dependencies, configuration files and scripts into the app directory.

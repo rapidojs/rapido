@@ -246,7 +246,7 @@ async function createApp(
         pageSize: 20,
         choices: [
           {
-            name: 'Prettier         Automatic code formatter',
+            name: 'Prettier         An opinionated automatic code formatter',
             short: 'Prettier',
             value: 'prettier',
             checked: true,
@@ -265,7 +265,7 @@ async function createApp(
           },
           {
             name:
-              'Session          Modules to managing session data and device storage',
+              'Session          Modules for managing session data and device storage',
             short: 'Session',
             value: 'session',
             checked: true,

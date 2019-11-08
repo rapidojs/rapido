@@ -4,31 +4,31 @@ This project was bootstrapped with [Rapido](https://github.com/rapidojs/rapido).
 
 In the project directory, you can run:
 
-### `npm start:<platform>` or `yarn start:<platform>`
+### `npm start:<platform>`
 
 Runs the app in development mode for the specified platform. Platform can be one of (android, ios, or web).
 
-### `npm lint` or `yarn lint`
+### `npm lint`
 
 Runs ESLint on the app code.
 
-### `npm tsc` or `yarn tsc`
-
-Runs TypeScript type checker on the app code.
-
-### `npm test` or `yarn test`
+### `npm test`
 
 Runs the test watcher in an interactive mode.
 
-### `npm run build:<platform>` or `yarn build:<platform>`
+### `npm build:<platform>`
 
 Builds the app for production for the specified platform. Platform can be one of (android, ios, or web).
 
-### `npm run publish` or `yarn run publish`
+### `npm run publish`
 
 Publishes your project to [Expo](https://expo.io) for over the air updates.
 
-### `npm eject` or `yarn eject`
+### `npm run upgrade`
+
+Upgrades all Rapido and related dependencies.
+
+### `npm run eject`
 
 Removes the scripts tool and copies build dependencies, configuration files and scripts into the app directory.
 

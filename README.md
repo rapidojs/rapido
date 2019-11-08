@@ -43,7 +43,7 @@ Rapido is an oppinionative toolset that makes building universal native apps for
 ```sh
 npx @rapido/init my-app
 cd my-app
-yarn start
+yarn start:web
 ```
 
 - [Creating an App](#creating-an-app) – How to create a new app.
@@ -71,31 +71,11 @@ Once the installation is done, you can open your project folder:
 cd my-app
 ```
 
-Inside the newly created project, you can run some built-in commands such as:
+Inside the newly created project, you can run some built-in commands. We recommend starting with:
 
-### `npm start:<platform>` or `yarn start:<platform>`
-
-Runs the app in development mode for the specified platform. Platform can be one of (android, ios, or web).
-
-### `npm lint` or `yarn lint`
-
-Runs ESLint on the app code.
-
-### `npm test` or `yarn test`
-
-Runs the test watcher in an interactive mode.
-
-### `npm run build:<platform>` or `yarn build:<platform>`
-
-Builds the app for production for the specified platform. Platform can be one of (android, ios, or web).
-
-### `npm run publish` or `yarn run publish`
-
-Publishes your project to [Expo](https://expo.io) for over the air updates.
-
-### `npm eject` or `yarn eject`
-
-Removes the scripts tool and copies build dependencies, configuration files and scripts into the app directory.
+```sh
+yarn start:web
+```
 
 ## User Guide
 
