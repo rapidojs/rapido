@@ -15,6 +15,7 @@ export {
   withTheme,
 } from 'styled-components/native';
 export * from './types';
+export { default as Base } from './Base';
 export { default as Box } from './Box';
 export { default as Button } from './Button';
 export { default as Image } from './Image';
