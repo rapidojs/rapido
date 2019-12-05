@@ -9,7 +9,6 @@
     "start:android": "rapido start --android",
     "start:ios": "rapido start --ios",
     "start:web": "rapido start --web",
-    "test": "rapido test",
     "tsc": "tsc --noEmit"
   },
   "browserslist": {
