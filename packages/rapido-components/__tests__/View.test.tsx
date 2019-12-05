@@ -8,13 +8,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Box from '../src/Box';
+import View from '../src/View';
 
 const render = (el: any) => renderer.create(el).toJSON();
 
-describe('Box', () => {
+describe('View', () => {
   test('renders properly', () => {
-    const json = render(<Box />);
+    const json = render(<View />);
     expect(json).not.toBeNull();
   });
 });

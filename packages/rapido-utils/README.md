@@ -48,15 +48,3 @@ const url = serialize({ param1: 'meh', param2: 'meep' });
 console.log(url);
 // Prints '?param1=meh&param2=meep'
 ```
-
-#### `httpRequest(method: string, url: string, payload? Object, options?: Object): Promise`
-
-Makes an HTTP request and returns a promise with the response.
-
-```js
-import { httpRequest } from '@rapido/utils';
-
-httpRequest('GET', 'https://api.myapp.com/resource').then(res => {
-  console.log(res);
-});
-```

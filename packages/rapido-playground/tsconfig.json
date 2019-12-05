@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true,
+    "target": "es5",
+    "module": "esnext",
+    "skipLibCheck": true,
+    "jsx": "react-native",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "web",
+    "coverage",
+    "web-build",
+    "node_modules",
+    "setupTests.js",
+    "babel.config.js"
+  ]
+}

@@ -27,20 +27,21 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "dev": "tsc -w",
     "test": "jest"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@styled-system/css": "^5.0.23",
-    "@types/styled-components": "^4.1.19",
-    "@types/styled-system": "^5.1.2",
-    "styled-components": "^5.0.0-beta.11",
-    "styled-system": "^5.1.2"
+    "@styled-system/css": "^5.1.4",
+    "@types/styled-components": "^4.4.0",
+    "@types/styled-system": "^5.1.4",
+    "styled-components": "^5.0.0-rc.2",
+    "styled-system": "^5.1.4"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
+    "@types/jest": "^24.0.23",
     "@types/react-native": "^0.57.65",
     "@types/react-test-renderer": "16.8.3",
     "@types/styled-system__css": "^5.0.4",

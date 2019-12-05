@@ -30,8 +30,8 @@
   ],
   "dependencies": {
     "commander": "2.20.0",
-    "react-dev-utils": "^9.1.0",
-    "sort-package-json": "^1.22.1"
+    "react-dev-utils": "^10.0.0",
+    "sort-package-json": "^1.30.0"
   },
   "engines": {
     "node": ">=8.10"

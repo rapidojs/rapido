@@ -1,0 +1,51 @@
+{
+  "name": "@rapido/playground",
+  "version": "0.1.0",
+  "private": true,
+  "main": "__generated__/AppEntry.js",
+  "scripts": {
+    "lint": "rapido lint",
+    "postinstall": "expo-yarn-workspaces postinstall",
+    "start:android": "rapido start --android",
+    "start:ios": "rapido start --ios",
+    "start:web": "rapido start --web",
+    "test": "rapido test",
+    "tsc": "tsc --noEmit"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "@rapido/components": "^0.0.25",
+    "@rapido/env": "^0.0.25",
+    "@rapido/scripts": "^0.0.25",
+    "@rapido/session": "^0.0.25",
+    "@rapido/utils": "^0.0.25",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.12.14",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.57.65",
+    "@types/react-test-renderer": "16.8.3",
+    "expo": "^35.0.0",
+    "expo-asset": "^7.0.0",
+    "expo-yarn-workspaces": "^1.2.1",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-web": "^0.11.7",
+    "react-test-renderer": "16.8.3",
+    "typescript": "^3.6.3"
+  }
+}

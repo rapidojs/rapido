@@ -23,18 +23,18 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "dev": "tsc -w",
     "test": "jest"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "axios": "^0.19.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "@types/lodash": "^4.14.138",
+    "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.149",
     "babel-preset-expo": "^7.1.0",
     "jest-expo": "^35.0.0",
     "react": "16.8.3",
