@@ -51,9 +51,10 @@
     }
   },
   "eslintIgnore": [
-    "*dist",
+    "dist",
     "node_modules",
     "my-app",
+    "__generated__",
     "packages/rapido-template/template",
     "packages/rapido-template-typescript/template"
   ],
