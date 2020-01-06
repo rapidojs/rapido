@@ -43,7 +43,7 @@ if (!checkRequiredFiles([paths.appJson])) {
 
 // Run Expo Publish
 const args = process.argv.slice(2);
-const result = spawn.sync('expo', ['publish', ...args, paths.appPath], {
+const result = spawn.sync('expo', ['publish', paths.appPath, ...args], {
   stdio: 'inherit',
 });
 

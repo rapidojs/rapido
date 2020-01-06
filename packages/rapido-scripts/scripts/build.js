@@ -73,7 +73,7 @@ if (!platform) {
 const args = process.argv.slice(3);
 const result = spawn.sync(
   'expo',
-  [`build:${platform}`, ...args, paths.appPath],
+  [`build:${platform}`, paths.appPath, ...args],
   {
     stdio: 'inherit',
   }

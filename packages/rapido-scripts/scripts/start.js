@@ -43,7 +43,8 @@ if (!checkRequiredFiles([paths.appJson])) {
 
 // Run Expo Start
 const args = process.argv.slice(2);
-const result = spawn.sync('expo', ['start', ...args, paths.appPath], {
+console.log(`expo start ${args} ${paths.appPath}`);
+const result = spawn.sync('expo', ['start', paths.appPath, ...args], {
   stdio: 'inherit',
 });
 

@@ -41,17 +41,17 @@
     "styled-system": "^5.1.4"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/react-native": "^0.57.65",
-    "@types/react-test-renderer": "16.8.3",
+    "@types/jest": "^24.0.25",
+    "@types/react-native": "~0.60.23",
+    "@types/react-test-renderer": "~16.9.0",
     "@types/styled-system__css": "^5.0.4",
-    "babel-preset-expo": "^7.1.0",
-    "jest-expo": "^35.0.0",
-    "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-web": "^0.11.7",
-    "react-test-renderer": "16.8.3",
-    "typescript": "^3.6.3"
+    "babel-preset-expo": "~8.0.0",
+    "jest-expo": "^36.0.1",
+    "react": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-web": "~0.11.7",
+    "react-test-renderer": "~16.9.0",
+    "typescript": "~3.6.3"
   },
   "peerDependencies": {
     "react": "*",
