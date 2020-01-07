@@ -1,6 +1,6 @@
 {
   "name": "@rapido/playground",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
@@ -27,11 +27,11 @@
     "extends": "react-app"
   },
   "dependencies": {
-    "@rapido/components": "^0.0.26",
-    "@rapido/env": "^0.0.26",
-    "@rapido/scripts": "^0.0.26",
-    "@rapido/session": "^0.0.26",
-    "@rapido/utils": "^0.0.26",
+    "@rapido/components": "^0.0.27",
+    "@rapido/env": "^0.0.27",
+    "@rapido/scripts": "^0.0.27",
+    "@rapido/session": "^0.0.27",
+    "@rapido/utils": "^0.0.27",
     "@types/jest": "^24.0.25",
     "@types/node": "^12.12.14",
     "@types/react": "~16.9.0",
