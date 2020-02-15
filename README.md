@@ -1,4 +1,4 @@
-<div style="background-color: #303846">
+<div style="background: #303846;">
   <p align="center">
     <img alt="rapido" src="logo.svg" width="250">
   </p>
