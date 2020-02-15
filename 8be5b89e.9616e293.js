@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[14],{104:function(o){o.exports=JSON.parse('{"rapido":{"allTagsPath":"/blog/tags","slug":"rapido","name":"rapido","count":1,"permalink":"/blog/tags/rapido"},"introduction":{"allTagsPath":"/blog/tags","slug":"introduction","name":"introduction","count":1,"permalink":"/blog/tags/introduction"}}')}}]);
