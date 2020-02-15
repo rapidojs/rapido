@@ -11,7 +11,7 @@ module.exports = {
   url: 'https://rapidojs.org',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'rapidojs',
+  organizationName: 'verumtech',
   projectName: 'rapido',
   themeConfig: {
     image: 'img/rapido.png',
