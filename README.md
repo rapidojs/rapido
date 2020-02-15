@@ -1,6 +1,14 @@
-<p align="center">
-  <img alt="rapido" src="logo.svg" width="250">
-</p>
+<style>
+.logo {
+  background-color: #303846;
+}
+</style>
+
+<div class="logo">
+  <p align="center">
+    <img alt="rapido" src="logo.svg" width="250">
+  </p>
+</div>
 
 <h2 align="center">
   <big>
