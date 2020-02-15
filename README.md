@@ -1,10 +1,4 @@
-<style>
-.logo {
-  background-color: #303846;
-}
-</style>
-
-<div class="logo">
+<div style="background-color: #303846">
   <p align="center">
     <img alt="rapido" src="logo.svg" width="250">
   </p>
