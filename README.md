@@ -1,8 +1,6 @@
-<div style="background: #303846;">
-  <p align="center">
-    <img alt="rapido" src="logo.svg" width="250">
-  </p>
-</div>
+<p align="center">
+  <img alt="rapido" src="logo.svg" width="250">
+</p>
 
 <h2 align="center">
   <big>
