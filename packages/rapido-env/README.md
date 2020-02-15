@@ -1,6 +1,6 @@
 # @rapido/env
 
-This package includes modules to manage environment variables in [Rapido](https://github.com/rapidojs/rapido) apps.
+This package includes modules to manage environment variables in [Rapido](https://github.com/verumtech/rapido) apps.
 
 Please refer to the Rapido documentation:
 

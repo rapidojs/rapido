@@ -1,6 +1,6 @@
 # @rapido/utils
 
-This package includes a library of common utilities used in [Rapido](https://github.com/rapidojs/rapido) apps.
+This package includes a library of common utilities used in [Rapido](https://github.com/verumtech/rapido) apps.
 
 Please refer to the Rapido documentation:
 

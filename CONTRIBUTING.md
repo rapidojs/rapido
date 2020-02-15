@@ -15,7 +15,7 @@ Please also provide a **test plan**, i.e. specify how you verified that your add
 ## Folder Structure of Rapido
 
 `rapido` is a monorepo, meaning it is divided into independent sub-packages.<br>
-These packages can be found in the [`packages/`](https://github.com/rapidojs/rapido/tree/master/packages) directory.
+These packages can be found in the [`packages/`](https://github.com/verumtech/rapido/tree/master/packages) directory.
 
 ### Overview of directory structure
 
@@ -28,23 +28,23 @@ packages/
 
 ### Package Descriptions
 
-#### [rapido-dev-utils](https://github.com/rapidojs/rapido/tree/master/packages/rapido-dev-utils)
+#### [rapido-dev-utils](https://github.com/verumtech/rapido/tree/master/packages/rapido-dev-utils)
 
 This package contains utilities used for `rapido` and sister packages.<br>
 Its main purpose is to conceal code which the user shouldn't be burdened with upon ejecting.
 
-#### [rapido-init](https://github.com/rapidojs/rapido/tree/master/packages/init)
+#### [rapido-init](https://github.com/verumtech/rapido/tree/master/packages/init)
 
 The global CLI command code to initialize a Rapido app can be found in this directory. It should run on Node 8+.
 
-#### [rapido-scripts](https://github.com/rapidojs/rapido/tree/master/packages/rapido-scripts)
+#### [rapido-scripts](https://github.com/verumtech/rapido/tree/master/packages/rapido-scripts)
 
 This package is the heart of the project, which contains the scripts for setting up, developing and deploying Rapido apps.<br>
 All functionality must be retained (and configuration given to the user) if they choose to eject.
 
 ## Setting Up a Local Copy
 
-1. Clone the repo with `git clone https://github.com/rapidojs/rapido`
+1. Clone the repo with `git clone https://github.com/verumtech/rapido`
 
 2. Run `yarn` in the root `rapido` folder.
 
@@ -61,7 +61,7 @@ and then run `yarn start` or `yarn test`.
 
 ## Cutting a Release
 
-1. Tag all merged pull requests that go into the release with the relevant milestone. Each merged PR should also be labeled with one of the [labels](https://github.com/rapidojs/rapido/labels) named `tag: ...` to indicate what kind of change it is. **Make sure all breaking changes are correctly labelled with `tag: breaking change`.**
+1. Tag all merged pull requests that go into the release with the relevant milestone. Each merged PR should also be labeled with one of the [labels](https://github.com/verumtech/rapido/labels) named `tag: ...` to indicate what kind of change it is. **Make sure all breaking changes are correctly labelled with `tag: breaking change`.**
 2. Close the milestone and create a new one for the next release.
 3. You don’t need to bump any of the package versions or publish them directly (the publish script will publish only changed packages).
 4. Note that files in `packages/rapido-init` should be modified with extreme caution. Since it’s a global CLI, any version of `rapido-init` (global CLI) including very old ones should work with the latest version of `rapido`.

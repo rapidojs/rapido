@@ -8,7 +8,7 @@
 # This releases an update to the `rapido` package.
 # Don't use `npm publish` for it.
 # Read the release instructions:
-# https://github.com/rapidojs/rapido/blob/master/CONTRIBUTING.md#cutting-a-release
+# https://github.com/verumtech/rapido/blob/master/CONTRIBUTING.md#cutting-a-release
 # ******************************************************************************
 
 # Start in tasks/ even if run from root directory

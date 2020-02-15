@@ -1,6 +1,6 @@
 # @rapido/dev-utils
 
-This package includes a library of dev utilities used in [Rapido](https://github.com/rapidojs/rapido) apps.
+This package includes a library of dev utilities used in [Rapido](https://github.com/verumtech/rapido) apps.
 
 Please refer to the Rapido documentation:
 
@@ -9,7 +9,7 @@ Please refer to the Rapido documentation:
 
 ## Usage in Rapido Projects
 
-These utilities come by default with [Rapido](https://github.com/rapidojs/rapido), which includes it by default. **You don’t need to install it separately in Rapido projects.**
+These utilities come by default with [Rapido](https://github.com/verumtech/rapido), which includes it by default. **You don’t need to install it separately in Rapido projects.**
 
 ## Usage Outside of Rapido
 

@@ -1,6 +1,6 @@
 # @rapido/session
 
-This package includes modules to manage session in [Rapido](https://github.com/rapidojs/rapido) apps.<br>
+This package includes modules to manage session in [Rapido](https://github.com/verumtech/rapido) apps.<br>
 Please refer to its documentation:
 
 - [Getting Started](https://rapidojs.org/docs/getting-started) – How to create a new app.

@@ -1,6 +1,6 @@
 # @rapido/init
 
-This package includes a CLI for creating [Rapido](https://github.com/rapidojs/rapido) apps.
+This package includes a CLI for creating [Rapido](https://github.com/verumtech/rapido) apps.
 
 Please refer to the Rapido documentation:
 

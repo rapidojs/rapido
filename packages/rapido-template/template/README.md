@@ -1,4 +1,4 @@
-This project was bootstrapped with [Rapido](https://github.com/rapidojs/rapido).
+This project was bootstrapped with [Rapido](https://github.com/verumtech/rapido).
 
 ## Available Scripts
 

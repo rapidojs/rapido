@@ -17,14 +17,14 @@
   <a href="https://npmjs.org/package/@rapido/scripts">
     <img src="https://img.shields.io/npm/v/@rapido/scripts" alt="npm">
   </a>
-  <a href="https://github.com/rapidojs/rapido/actions?workflow=build">
-    <img src="https://github.com/rapidojs/rapido/workflows/build/badge.svg" alt="build">
+  <a href="https://github.com/verumtech/rapido/actions?workflow=build">
+    <img src="https://github.com/verumtech/rapido/workflows/build/badge.svg" alt="build">
   </a>
   <a href="https://spectrum.chat/rapido">
     <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum">
   </a>
-  <a href="https://twitter.com/intent/follow?screen_name=rapidojs">
-    <img src="https://img.shields.io/twitter/follow/rapidojs.svg?style=social&label=Follow%20@rapidojs" alt="Follow on Twitter">
+  <a href="https://twitter.com/intent/follow?screen_name=verumtech">
+    <img src="https://img.shields.io/twitter/follow/verumtech.svg?style=social&label=Follow%20@verumtech" alt="Follow on Twitter">
   </a>
 </div>
 
@@ -50,7 +50,7 @@ yarn start:web
 - [User Guide](https://rapidojs.org/) – How to develop apps bootstrapped with Rapido.
 
 Rapido works on macOS, Windows, and Linux.<br>
-If something doesn’t work, please [file an issue](https://github.com/rapidojs/rapido/issues/new).<br>
+If something doesn’t work, please [file an issue](https://github.com/verumtech/rapido/issues/new).<br>
 If you have questions or need help, please ask in our [Spectrum](https://spectrum.chat/rapido) community.
 
 ## Creating an App
@@ -91,4 +91,4 @@ We'd love to have your helping hand on `rapido`! See [CONTRIBUTING.md](CONTRIBUT
 
 ## License
 
-Rapido is open source software [licensed as MIT](https://github.com/rapidojs/rapido/blob/master/LICENSE).
+Rapido is open source software [licensed as MIT](https://github.com/verumtech/rapido/blob/master/LICENSE).

@@ -117,7 +117,7 @@ const program = new commander.Command(packageJson.name)
       `    If you have any problems, do not hesitate to file an issue:`
     );
     console.log(
-      `      ${chalk.cyan('https://github.com/rapidojs/rapido/issues/new')}`
+      `      ${chalk.cyan('https://github.com/verumtech/rapido/issues/new')}`
     );
     console.log();
   })
